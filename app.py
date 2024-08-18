@@ -39,15 +39,18 @@ class AppWindow(QtWidgets.QDialog):
         myUI.viewParameter_IMPROVE_VALUE_STR_CLEAR.textChanged.connect(me.calc_Improve)
         myUI.viewParameter_IMPROVE_VALUE_STR_P.textChanged.connect(me.calc_Improve)
         myUI.viewParameter_IMPROVE_VALUE_STR_UNIQUE.textChanged.connect(me.calc_Improve)
-        myUI.viewParameter_IMPROVE_VALUE_DEX_CLEAR.textChanged.connect(me.calc_Improve)
-        myUI.viewParameter_IMPROVE_VALUE_DEX_P.textChanged.connect(me.calc_Improve)
-        myUI.viewParameter_IMPROVE_VALUE_DEX_UNIQUE.textChanged.connect(me.calc_Improve)
-        myUI.viewParameter_IMPROVE_VALUE_INT_CLEAR.textChanged.connect(me.calc_Improve)
-        myUI.viewParameter_IMPROVE_VALUE_INT_P.textChanged.connect(me.calc_Improve)
-        myUI.viewParameter_IMPROVE_VALUE_INT_UNIQUE.textChanged.connect(me.calc_Improve)
-        myUI.viewParameter_IMPROVE_VALUE_LUK_CLEAR.textChanged.connect(me.calc_Improve)
-        myUI.viewParameter_IMPROVE_VALUE_LUK_P.textChanged.connect(me.calc_Improve)
-        myUI.viewParameter_IMPROVE_VALUE_LUK_UNIQUE.textChanged.connect(me.calc_Improve)
+        myUI.viewParameter_IMPROVE_VALUE_HP_CLEAR.textChanged.connect(me.calc_Improve)
+        myUI.viewParameter_IMPROVE_VALUE_HP_P.textChanged.connect(me.calc_Improve)
+        myUI.viewParameter_IMPROVE_VALUE_HP_UNIQUE.textChanged.connect(me.calc_Improve)
+        # myUI.viewParameter_IMPROVE_VALUE_DEX_CLEAR.textChanged.connect(me.calc_Improve)
+        # myUI.viewParameter_IMPROVE_VALUE_DEX_P.textChanged.connect(me.calc_Improve)
+        # myUI.viewParameter_IMPROVE_VALUE_DEX_UNIQUE.textChanged.connect(me.calc_Improve)
+        # myUI.viewParameter_IMPROVE_VALUE_INT_CLEAR.textChanged.connect(me.calc_Improve)
+        # myUI.viewParameter_IMPROVE_VALUE_INT_P.textChanged.connect(me.calc_Improve)
+        # myUI.viewParameter_IMPROVE_VALUE_INT_UNIQUE.textChanged.connect(me.calc_Improve)
+        # myUI.viewParameter_IMPROVE_VALUE_LUK_CLEAR.textChanged.connect(me.calc_Improve)
+        # myUI.viewParameter_IMPROVE_VALUE_LUK_P.textChanged.connect(me.calc_Improve)
+        # myUI.viewParameter_IMPROVE_VALUE_LUK_UNIQUE.textChanged.connect(me.calc_Improve)
         myUI.viewParameter_IMPROVE_VALUE_ALL_P.textChanged.connect(me.calc_Improve)
         myUI.viewParameter_IMPROVE_VALUE_ATT.textChanged.connect(me.calc_Improve)
         myUI.viewParameter_IMPROVE_VALUE_ATT_P.textChanged.connect(me.calc_Improve)
@@ -58,33 +61,35 @@ class AppWindow(QtWidgets.QDialog):
         myUI.viewParameter_IMPROVE_VALUE_AS_PARAMETER.activated.connect(me.calc_Improve)
 
         # page: 塔戒
-        myUI.viewSeedRing_STR.textChanged.connect(me.calc_SeedRing)
-        myUI.viewSeedRing_STR_P.textChanged.connect(me.calc_SeedRing)
-        myUI.viewSeedRing_DEX.textChanged.connect(me.calc_SeedRing)
-        myUI.viewSeedRing_DEX_P.textChanged.connect(me.calc_SeedRing)
-        myUI.viewSeedRing_INT.textChanged.connect(me.calc_SeedRing)
-        myUI.viewSeedRing_INT_P.textChanged.connect(me.calc_SeedRing)
-        myUI.viewSeedRing_LUK.textChanged.connect(me.calc_SeedRing)
-        myUI.viewSeedRing_LUK_P.textChanged.connect(me.calc_SeedRing)
-        myUI.viewSeedRing_ALL_P.textChanged.connect(me.calc_SeedRing)
-        myUI.viewSeedRing_ATTACK.textChanged.connect(me.calc_SeedRing)
-        myUI.viewSeedRing_ATTACK_P.textChanged.connect(me.calc_SeedRing)
-        myUI.viewSeedRing_DMG_P.textChanged.connect(me.calc_SeedRing)
-        myUI.viewSeedRing_STRIKE_P.textChanged.connect(me.calc_SeedRing)
-        myUI.viewSeedRing_IGNORE_P.textChanged.connect(me.calc_SeedRing)
-        myUI.viewSeedRing_WP_ATTACK.textChanged.connect(me.calc_SeedRing)
-        # myUI.viewSeedRing_ALL_IN.textChanged.connect(me.calc_SeedRing)
-        myUI.viewSeedRing_TIME_VALUE.valueChanged.connect(me.calc_SeedRing)
+        # myUI.viewSeedRing_STR.textChanged.connect(me.calc_SeedRing)
+        # myUI.viewSeedRing_STR_P.textChanged.connect(me.calc_SeedRing)
+        # myUI.viewSeedRing_DEX.textChanged.connect(me.calc_SeedRing)
+        # myUI.viewSeedRing_DEX_P.textChanged.connect(me.calc_SeedRing)
+        # myUI.viewSeedRing_INT.textChanged.connect(me.calc_SeedRing)
+        # myUI.viewSeedRing_INT_P.textChanged.connect(me.calc_SeedRing)
+        # myUI.viewSeedRing_LUK.textChanged.connect(me.calc_SeedRing)
+        # myUI.viewSeedRing_LUK_P.textChanged.connect(me.calc_SeedRing)
+        # myUI.viewSeedRing_ALL_P.textChanged.connect(me.calc_SeedRing)
+        # myUI.viewSeedRing_ATTACK.textChanged.connect(me.calc_SeedRing)
+        # myUI.viewSeedRing_ATTACK_P.textChanged.connect(me.calc_SeedRing)
+        # myUI.viewSeedRing_DMG_P.textChanged.connect(me.calc_SeedRing)
+        # myUI.viewSeedRing_STRIKE_P.textChanged.connect(me.calc_SeedRing)
+        # myUI.viewSeedRing_IGNORE_P.textChanged.connect(me.calc_SeedRing)
+        # myUI.viewSeedRing_WP_ATTACK.textChanged.connect(me.calc_SeedRing)
+        # # myUI.viewSeedRing_ALL_IN.textChanged.connect(me.calc_SeedRing)
+        # myUI.viewSeedRing_TIME_VALUE.valueChanged.connect(me.calc_SeedRing)
 
         # page: 裝備變更
         myUI.viewEquipment_origin_STR.textChanged.connect(me.calc_Equipment)
         myUI.viewEquipment_origin_STR_P.textChanged.connect(me.calc_Equipment)
-        myUI.viewEquipment_origin_DEX.textChanged.connect(me.calc_Equipment)
-        myUI.viewEquipment_origin_DEX_P.textChanged.connect(me.calc_Equipment)
-        myUI.viewEquipment_origin_INT.textChanged.connect(me.calc_Equipment)
-        myUI.viewEquipment_origin_INT_P.textChanged.connect(me.calc_Equipment)
-        myUI.viewEquipment_origin_LUK.textChanged.connect(me.calc_Equipment)
-        myUI.viewEquipment_origin_LUK_P.textChanged.connect(me.calc_Equipment)
+        myUI.viewEquipment_origin_HP.textChanged.connect(me.calc_Equipment)
+        myUI.viewEquipment_origin_HP_P.textChanged.connect(me.calc_Equipment)
+        # myUI.viewEquipment_origin_DEX.textChanged.connect(me.calc_Equipment)
+        # myUI.viewEquipment_origin_DEX_P.textChanged.connect(me.calc_Equipment)
+        # myUI.viewEquipment_origin_INT.textChanged.connect(me.calc_Equipment)
+        # myUI.viewEquipment_origin_INT_P.textChanged.connect(me.calc_Equipment)
+        # myUI.viewEquipment_origin_LUK.textChanged.connect(me.calc_Equipment)
+        # myUI.viewEquipment_origin_LUK_P.textChanged.connect(me.calc_Equipment)
         myUI.viewEquipment_origin_ALL_P.textChanged.connect(me.calc_Equipment)
         myUI.viewEquipment_origin_ATTACK.textChanged.connect(me.calc_Equipment)
         myUI.viewEquipment_origin_ATTACK_P.textChanged.connect(me.calc_Equipment)
@@ -94,12 +99,14 @@ class AppWindow(QtWidgets.QDialog):
 
         myUI.viewEquipment_Set1_STR.textChanged.connect(me.calc_Equipment)
         myUI.viewEquipment_Set1_STR_P.textChanged.connect(me.calc_Equipment)
-        myUI.viewEquipment_Set1_DEX.textChanged.connect(me.calc_Equipment)
-        myUI.viewEquipment_Set1_DEX_P.textChanged.connect(me.calc_Equipment)
-        myUI.viewEquipment_Set1_INT.textChanged.connect(me.calc_Equipment)
-        myUI.viewEquipment_Set1_INT_P.textChanged.connect(me.calc_Equipment)
-        myUI.viewEquipment_Set1_LUK.textChanged.connect(me.calc_Equipment)
-        myUI.viewEquipment_Set1_LUK_P.textChanged.connect(me.calc_Equipment)
+        myUI.viewEquipment_Set1_HP.textChanged.connect(me.calc_Equipment)
+        myUI.viewEquipment_Set1_HP_P.textChanged.connect(me.calc_Equipment)
+        # myUI.viewEquipment_Set1_DEX.textChanged.connect(me.calc_Equipment)
+        # myUI.viewEquipment_Set1_DEX_P.textChanged.connect(me.calc_Equipment)
+        # myUI.viewEquipment_Set1_INT.textChanged.connect(me.calc_Equipment)
+        # myUI.viewEquipment_Set1_INT_P.textChanged.connect(me.calc_Equipment)
+        # myUI.viewEquipment_Set1_LUK.textChanged.connect(me.calc_Equipment)
+        # myUI.viewEquipment_Set1_LUK_P.textChanged.connect(me.calc_Equipment)
         myUI.viewEquipment_Set1_ALL_P.textChanged.connect(me.calc_Equipment)
         myUI.viewEquipment_Set1_ATTACK.textChanged.connect(me.calc_Equipment)
         myUI.viewEquipment_Set1_ATTACK_P.textChanged.connect(me.calc_Equipment)
@@ -109,12 +116,14 @@ class AppWindow(QtWidgets.QDialog):
 
         myUI.viewEquipment_Set2_STR.textChanged.connect(me.calc_Equipment)
         myUI.viewEquipment_Set2_STR_P.textChanged.connect(me.calc_Equipment)
-        myUI.viewEquipment_Set2_DEX.textChanged.connect(me.calc_Equipment)
-        myUI.viewEquipment_Set2_DEX_P.textChanged.connect(me.calc_Equipment)
-        myUI.viewEquipment_Set2_INT.textChanged.connect(me.calc_Equipment)
-        myUI.viewEquipment_Set2_INT_P.textChanged.connect(me.calc_Equipment)
-        myUI.viewEquipment_Set2_LUK.textChanged.connect(me.calc_Equipment)
-        myUI.viewEquipment_Set2_LUK_P.textChanged.connect(me.calc_Equipment)
+        myUI.viewEquipment_Set2_HP.textChanged.connect(me.calc_Equipment)
+        myUI.viewEquipment_Set2_HP_P.textChanged.connect(me.calc_Equipment)
+        # myUI.viewEquipment_Set2_DEX.textChanged.connect(me.calc_Equipment)
+        # myUI.viewEquipment_Set2_DEX_P.textChanged.connect(me.calc_Equipment)
+        # myUI.viewEquipment_Set2_INT.textChanged.connect(me.calc_Equipment)
+        # myUI.viewEquipment_Set2_INT_P.textChanged.connect(me.calc_Equipment)
+        # myUI.viewEquipment_Set2_LUK.textChanged.connect(me.calc_Equipment)
+        # myUI.viewEquipment_Set2_LUK_P.textChanged.connect(me.calc_Equipment)
         myUI.viewEquipment_Set2_ALL_P.textChanged.connect(me.calc_Equipment)
         myUI.viewEquipment_Set2_ATTACK.textChanged.connect(me.calc_Equipment)
         myUI.viewEquipment_Set2_ATTACK_P.textChanged.connect(me.calc_Equipment)
@@ -166,17 +175,21 @@ class AppWindow(QtWidgets.QDialog):
                 if (item[0] == 'STR_P'): myUI.viewAbility_STR_P.setText(item[1])
                 if (item[0] == 'STR_UNIQUE'): myUI.viewAbility_STR_UNIQUE.setText(item[1])
 
-                if (item[0] == 'DEX_CLEAR'): myUI.viewAbility_DEX_CLEAR.setText(item[1])
-                if (item[0] == 'DEX_P'): myUI.viewAbility_DEX_P.setText(item[1])
-                if (item[0] == 'DEX_UNIQUE'): myUI.viewAbility_DEX_UNIQUE.setText(item[1])
+                if (item[0] == 'HP_CLEAR'): myUI.viewAbility_HP_CLEAR.setText(item[1])
+                if (item[0] == 'HP_P'): myUI.viewAbility_HP_P.setText(item[1])
+                if (item[0] == 'HP_UNIQUE'): myUI.viewAbility_HP_UNIQUE.setText(item[1])
 
-                if (item[0] == 'INT_CLEAR'): myUI.viewAbility_INT_CLEAR.setText(item[1])
-                if (item[0] == 'INT_P'): myUI.viewAbility_INT_P.setText(item[1])
-                if (item[0] == 'INT_UNIQUE'): myUI.viewAbility_INT_UNIQUE.setText(item[1])
+                # if (item[0] == 'DEX_CLEAR'): myUI.viewAbility_DEX_CLEAR.setText(item[1])
+                # if (item[0] == 'DEX_P'): myUI.viewAbility_DEX_P.setText(item[1])
+                # if (item[0] == 'DEX_UNIQUE'): myUI.viewAbility_DEX_UNIQUE.setText(item[1])
 
-                if (item[0] == 'LUK_CLEAR'): myUI.viewAbility_LUK_CLEAR.setText(item[1])
-                if (item[0] == 'LUK_P'): myUI.viewAbility_LUK_P.setText(item[1])
-                if (item[0] == 'LUK_UNIQUE'): myUI.viewAbility_LUK_UNIQUE.setText(item[1])
+                # if (item[0] == 'INT_CLEAR'): myUI.viewAbility_INT_CLEAR.setText(item[1])
+                # if (item[0] == 'INT_P'): myUI.viewAbility_INT_P.setText(item[1])
+                # if (item[0] == 'INT_UNIQUE'): myUI.viewAbility_INT_UNIQUE.setText(item[1])
+
+                # if (item[0] == 'LUK_CLEAR'): myUI.viewAbility_LUK_CLEAR.setText(item[1])
+                # if (item[0] == 'LUK_P'): myUI.viewAbility_LUK_P.setText(item[1])
+                # if (item[0] == 'LUK_UNIQUE'): myUI.viewAbility_LUK_UNIQUE.setText(item[1])
 
                 if (item[0] == 'SEED_ATTACK'): myUI.viewSeedRing_ATTACK.setText(item[1])
                 if (item[0] == 'SEED_ATTACK_P'): myUI.viewSeedRing_ATTACK_P.setText(item[1])
@@ -228,18 +241,22 @@ class AppWindow(QtWidgets.QDialog):
                 'STR_CLEAR=' + str(myUI.viewAbility_STR_CLEAR.text()) + '\n',
                 'STR_P=' + str(myUI.viewAbility_STR_P.text()) + '\n',
                 'STR_UNIQUE=' + str(myUI.viewAbility_STR_UNIQUE.text()) + '\n',
+
+                'HP_CLEAR=' + str(myUI.viewAbility_HP_CLEAR.text()) + '\n',
+                'HP_P=' + str(myUI.viewAbility_HP_P.text()) + '\n',
+                'HP_UNIQUE=' + str(myUI.viewAbility_HP_UNIQUE.text()) + '\n',
                 
-                'DEX_CLEAR=' + str(myUI.viewAbility_DEX_CLEAR.text()) + '\n',
-                'DEX_P=' + str(myUI.viewAbility_DEX_P.text()) + '\n',
-                'DEX_UNIQUE=' + str(myUI.viewAbility_DEX_UNIQUE.text()) + '\n',
+                # 'DEX_CLEAR=' + str(myUI.viewAbility_DEX_CLEAR.text()) + '\n',
+                # 'DEX_P=' + str(myUI.viewAbility_DEX_P.text()) + '\n',
+                # 'DEX_UNIQUE=' + str(myUI.viewAbility_DEX_UNIQUE.text()) + '\n',
 
-                'INT_CLEAR=' + str(myUI.viewAbility_INT_CLEAR.text()) + '\n',
-                'INT_P=' + str(myUI.viewAbility_INT_P.text()) + '\n',
-                'INT_UNIQUE=' + str(myUI.viewAbility_INT_UNIQUE.text()) + '\n',
+                # 'INT_CLEAR=' + str(myUI.viewAbility_INT_CLEAR.text()) + '\n',
+                # 'INT_P=' + str(myUI.viewAbility_INT_P.text()) + '\n',
+                # 'INT_UNIQUE=' + str(myUI.viewAbility_INT_UNIQUE.text()) + '\n',
 
-                'LUK_CLEAR=' + str(myUI.viewAbility_LUK_CLEAR.text()) + '\n',
-                'LUK_P=' + str(myUI.viewAbility_LUK_P.text()) + '\n',
-                'LUK_UNIQUE=' + str(myUI.viewAbility_LUK_UNIQUE.text()) + '\n',
+                # 'LUK_CLEAR=' + str(myUI.viewAbility_LUK_CLEAR.text()) + '\n',
+                # 'LUK_P=' + str(myUI.viewAbility_LUK_P.text()) + '\n',
+                # 'LUK_UNIQUE=' + str(myUI.viewAbility_LUK_UNIQUE.text()) + '\n',
 
                 'SEED_ATTACK=' + str(myUI.viewSeedRing_ATTACK.text()) + '\n',
                 'SEED_ATTACK_P=' + str(myUI.viewSeedRing_ATTACK_P.text()) + '\n',
@@ -294,23 +311,27 @@ class AppWindow(QtWidgets.QDialog):
                 'STR_P': myUI.textToInt(myUI.viewAbility_STR_P.text())/100,
                 'STR_UNIQUE': myUI.textToInt(myUI.viewAbility_STR_UNIQUE.text()),
 
-                'DEX_CLEAR': myUI.textToInt(myUI.viewAbility_DEX_CLEAR.text()),
-                'DEX_P': myUI.textToInt(myUI.viewAbility_DEX_P.text())/100,
-                'DEX_UNIQUE': myUI.textToInt(myUI.viewAbility_DEX_UNIQUE.text()),
+                'HP_CLEAR': myUI.textToInt(myUI.viewAbility_HP_CLEAR.text()),
+                'HP_P': myUI.textToInt(myUI.viewAbility_HP_P.text())/100,
+                'HP_UNIQUE': myUI.textToInt(myUI.viewAbility_HP_UNIQUE.text()),
 
-                'INT_CLEAR': myUI.textToInt(myUI.viewAbility_INT_CLEAR.text()),
-                'INT_P': myUI.textToInt(myUI.viewAbility_INT_P.text())/100,
-                'INT_UNIQUE': myUI.textToInt(myUI.viewAbility_INT_UNIQUE.text()),
+                # 'DEX_CLEAR': myUI.textToInt(myUI.viewAbility_DEX_CLEAR.text()),
+                # 'DEX_P': myUI.textToInt(myUI.viewAbility_DEX_P.text())/100,
+                # 'DEX_UNIQUE': myUI.textToInt(myUI.viewAbility_DEX_UNIQUE.text()),
 
-                'LUK_CLEAR': myUI.textToInt(myUI.viewAbility_LUK_CLEAR.text()),
-                'LUK_P': myUI.textToInt(myUI.viewAbility_LUK_P.text())/100,
-                'LUK_UNIQUE': myUI.textToInt(myUI.viewAbility_LUK_UNIQUE.text()),
+                # 'INT_CLEAR': myUI.textToInt(myUI.viewAbility_INT_CLEAR.text()),
+                # 'INT_P': myUI.textToInt(myUI.viewAbility_INT_P.text())/100,
+                # 'INT_UNIQUE': myUI.textToInt(myUI.viewAbility_INT_UNIQUE.text()),
+
+                # 'LUK_CLEAR': myUI.textToInt(myUI.viewAbility_LUK_CLEAR.text()),
+                # 'LUK_P': myUI.textToInt(myUI.viewAbility_LUK_P.text())/100,
+                # 'LUK_UNIQUE': myUI.textToInt(myUI.viewAbility_LUK_UNIQUE.text()),
             }
 
             myCharactor.updateAbilityByData(data)
             me.calc_Equivalent()
             me.calc_Improve()
-            me.calc_SeedRing()
+            # me.calc_SeedRing()
             me.calc_Equipment()
             QtWidgets.QMessageBox.information(me, '提示', '計算完成')
         except Exception:
@@ -350,9 +371,9 @@ class AppWindow(QtWidgets.QDialog):
 
             if(RANGE_TYPE == '％全屬'): 
                 new_data['STR_P'] = RANGE_VALUE / 100
-                new_data['DEX_P'] = RANGE_VALUE / 100
-                new_data['INT_P'] = RANGE_VALUE / 100
-                new_data['LUK_P'] = RANGE_VALUE / 100
+                # new_data['DEX_P'] = RANGE_VALUE / 100
+                # new_data['INT_P'] = RANGE_VALUE / 100
+                # new_data['LUK_P'] = RANGE_VALUE / 100
                 
             if(RANGE_TYPE == '力量'): 
                 new_data['STR_CLEAR'] = RANGE_VALUE
@@ -363,32 +384,41 @@ class AppWindow(QtWidgets.QDialog):
             if(RANGE_TYPE == '不吃％力'): 
                 new_data['STR_UNIQUE'] = RANGE_VALUE
 
-            if(RANGE_TYPE == '敏捷'): 
-                new_data['DEX_CLEAR'] = RANGE_VALUE
+            if(RANGE_TYPE == 'HP'): 
+                new_data['HP_CLEAR'] = RANGE_VALUE
                 
-            if(RANGE_TYPE == '％敏捷'): 
-                new_data['DEX_P'] = RANGE_VALUE / 100
+            if(RANGE_TYPE == '％HP'): 
+                new_data['HP_P'] = RANGE_VALUE / 100
             
-            if(RANGE_TYPE == '不吃％敏'): 
-                new_data['DEX_UNIQUE'] = RANGE_VALUE
+            if(RANGE_TYPE == '不吃％HP'): 
+                new_data['HP_UNIQUE'] = RANGE_VALUE
+
+            # if(RANGE_TYPE == '敏捷'): 
+            #     new_data['DEX_CLEAR'] = RANGE_VALUE
                 
-            if(RANGE_TYPE == '智力'): 
-                new_data['INT_CLEAR'] = RANGE_VALUE
+            # if(RANGE_TYPE == '％敏捷'): 
+            #     new_data['DEX_P'] = RANGE_VALUE / 100
+            
+            # if(RANGE_TYPE == '不吃％敏'): 
+            #     new_data['DEX_UNIQUE'] = RANGE_VALUE
                 
-            if(RANGE_TYPE == '％智力'): 
-                new_data['INT_P'] = RANGE_VALUE / 100
+            # if(RANGE_TYPE == '智力'): 
+            #     new_data['INT_CLEAR'] = RANGE_VALUE
                 
-            if(RANGE_TYPE == '不吃％智'): 
-                new_data['INT_UNIQUE'] = RANGE_VALUE
+            # if(RANGE_TYPE == '％智力'): 
+            #     new_data['INT_P'] = RANGE_VALUE / 100
                 
-            if(RANGE_TYPE == '幸運'): 
-                new_data['LUK_CLEAR'] = RANGE_VALUE
+            # if(RANGE_TYPE == '不吃％智'): 
+            #     new_data['INT_UNIQUE'] = RANGE_VALUE
                 
-            if(RANGE_TYPE == '％幸運'): 
-                new_data['LUK_P'] = RANGE_VALUE / 100
+            # if(RANGE_TYPE == '幸運'): 
+            #     new_data['LUK_CLEAR'] = RANGE_VALUE
                 
-            if(RANGE_TYPE == '不吃％幸'): 
-                new_data['LUK_UNIQUE'] = RANGE_VALUE
+            # if(RANGE_TYPE == '％幸運'): 
+            #     new_data['LUK_P'] = RANGE_VALUE / 100
+                
+            # if(RANGE_TYPE == '不吃％幸'): 
+            #     new_data['LUK_UNIQUE'] = RANGE_VALUE
 
             IMPROVE_INFO = myCharactor.calcImprove(new_data)
             STATE_INFO = myCharactor.getEquivalent(IMPROVE_INFO['TOTAL'])
@@ -408,17 +438,21 @@ class AppWindow(QtWidgets.QDialog):
             myUI.viewParameter_EQUIVALENT_STR_P.setText(toRoundStr(STATE_INFO['STR_P']*100))
             myUI.viewParameter_EQUIVALENT_STR_UNIQUE.setText(toRoundStr(STATE_INFO['STR_UNIQUE']))
             
-            myUI.viewParameter_EQUIVALENT_DEX_CLEAR.setText(toRoundStr(STATE_INFO['DEX_CLEAR']))
-            myUI.viewParameter_EQUIVALENT_DEX_P.setText(toRoundStr(STATE_INFO['DEX_P']*100))
-            myUI.viewParameter_EQUIVALENT_DEX_UNIQUE.setText(toRoundStr(STATE_INFO['DEX_UNIQUE']))
+            myUI.viewParameter_EQUIVALENT_HP_CLEAR.setText(toRoundStr(STATE_INFO['HP_CLEAR']))
+            myUI.viewParameter_EQUIVALENT_HP_P.setText(toRoundStr(STATE_INFO['HP_P']*100))
+            myUI.viewParameter_EQUIVALENT_HP_UNIQUE.setText(toRoundStr(STATE_INFO['HP_UNIQUE']))
             
-            myUI.viewParameter_EQUIVALENT_INT_CLEAR.setText(toRoundStr(STATE_INFO['INT_CLEAR']))
-            myUI.viewParameter_EQUIVALENT_INT_P.setText(toRoundStr(STATE_INFO['INT_P']*100))
-            myUI.viewParameter_EQUIVALENT_INT_UNIQUE.setText(toRoundStr(STATE_INFO['INT_UNIQUE']))
+            # myUI.viewParameter_EQUIVALENT_DEX_CLEAR.setText(toRoundStr(STATE_INFO['DEX_CLEAR']))
+            # myUI.viewParameter_EQUIVALENT_DEX_P.setText(toRoundStr(STATE_INFO['DEX_P']*100))
+            # myUI.viewParameter_EQUIVALENT_DEX_UNIQUE.setText(toRoundStr(STATE_INFO['DEX_UNIQUE']))
             
-            myUI.viewParameter_EQUIVALENT_LUK_CLEAR.setText(toRoundStr(STATE_INFO['LUK_CLEAR']))
-            myUI.viewParameter_EQUIVALENT_LUK_P.setText(toRoundStr(STATE_INFO['LUK_P']*100))
-            myUI.viewParameter_EQUIVALENT_LUK_UNIQUE.setText(toRoundStr(STATE_INFO['LUK_UNIQUE']))
+            # myUI.viewParameter_EQUIVALENT_INT_CLEAR.setText(toRoundStr(STATE_INFO['INT_CLEAR']))
+            # myUI.viewParameter_EQUIVALENT_INT_P.setText(toRoundStr(STATE_INFO['INT_P']*100))
+            # myUI.viewParameter_EQUIVALENT_INT_UNIQUE.setText(toRoundStr(STATE_INFO['INT_UNIQUE']))
+            
+            # myUI.viewParameter_EQUIVALENT_LUK_CLEAR.setText(toRoundStr(STATE_INFO['LUK_CLEAR']))
+            # myUI.viewParameter_EQUIVALENT_LUK_P.setText(toRoundStr(STATE_INFO['LUK_P']*100))
+            # myUI.viewParameter_EQUIVALENT_LUK_UNIQUE.setText(toRoundStr(STATE_INFO['LUK_UNIQUE']))
         except Exception:
             QtWidgets.QMessageBox.warning(me, '提示', '輸入資料有誤')
             pass
@@ -442,17 +476,21 @@ class AppWindow(QtWidgets.QDialog):
                 'STR_P': myUI.textToFloat(myUI.viewParameter_IMPROVE_VALUE_STR_P.text()) / 100,
                 'STR_UNIQUE': myUI.textToFloat(myUI.viewParameter_IMPROVE_VALUE_STR_UNIQUE.text()),
 
-                'DEX_CLEAR': myUI.textToFloat(myUI.viewParameter_IMPROVE_VALUE_DEX_CLEAR.text()),
-                'DEX_P': myUI.textToFloat(myUI.viewParameter_IMPROVE_VALUE_DEX_P.text()) / 100,
-                'DEX_UNIQUE': myUI.textToFloat(myUI.viewParameter_IMPROVE_VALUE_DEX_UNIQUE.text()),
+                'HP_CLEAR': myUI.textToFloat(myUI.viewParameter_IMPROVE_VALUE_HP_CLEAR.text()),
+                'HP_P': myUI.textToFloat(myUI.viewParameter_IMPROVE_VALUE_HP_P.text()) / 100,
+                'HP_UNIQUE': myUI.textToFloat(myUI.viewParameter_IMPROVE_VALUE_HP_UNIQUE.text()),
 
-                'INT_CLEAR': myUI.textToFloat(myUI.viewParameter_IMPROVE_VALUE_INT_CLEAR.text()),
-                'INT_P': myUI.textToFloat(myUI.viewParameter_IMPROVE_VALUE_INT_P.text()) / 100,
-                'INT_UNIQUE': myUI.textToFloat(myUI.viewParameter_IMPROVE_VALUE_INT_UNIQUE.text()),
+                # 'DEX_CLEAR': myUI.textToFloat(myUI.viewParameter_IMPROVE_VALUE_DEX_CLEAR.text()),
+                # 'DEX_P': myUI.textToFloat(myUI.viewParameter_IMPROVE_VALUE_DEX_P.text()) / 100,
+                # 'DEX_UNIQUE': myUI.textToFloat(myUI.viewParameter_IMPROVE_VALUE_DEX_UNIQUE.text()),
 
-                'LUK_CLEAR': myUI.textToFloat(myUI.viewParameter_IMPROVE_VALUE_LUK_CLEAR.text()),
-                'LUK_P': myUI.textToFloat(myUI.viewParameter_IMPROVE_VALUE_LUK_P.text()) / 100,
-                'LUK_UNIQUE': myUI.textToFloat(myUI.viewParameter_IMPROVE_VALUE_LUK_UNIQUE.text()),
+                # 'INT_CLEAR': myUI.textToFloat(myUI.viewParameter_IMPROVE_VALUE_INT_CLEAR.text()),
+                # 'INT_P': myUI.textToFloat(myUI.viewParameter_IMPROVE_VALUE_INT_P.text()) / 100,
+                # 'INT_UNIQUE': myUI.textToFloat(myUI.viewParameter_IMPROVE_VALUE_INT_UNIQUE.text()),
+
+                # 'LUK_CLEAR': myUI.textToFloat(myUI.viewParameter_IMPROVE_VALUE_LUK_CLEAR.text()),
+                # 'LUK_P': myUI.textToFloat(myUI.viewParameter_IMPROVE_VALUE_LUK_P.text()) / 100,
+                # 'LUK_UNIQUE': myUI.textToFloat(myUI.viewParameter_IMPROVE_VALUE_LUK_UNIQUE.text()),
 
                 'ALL_P': myUI.textToFloat(myUI.viewParameter_IMPROVE_VALUE_ALL_P.text()) / 100,
             }
@@ -467,18 +505,22 @@ class AppWindow(QtWidgets.QDialog):
             myUI.viewParameter_IMPROVE_STR_CLEAR.setText(IMPROVE_TEXT + toPercentText(IMPROVE_INFO['STR_CLEAR']))
             myUI.viewParameter_IMPROVE_STR_P.setText(IMPROVE_TEXT + toPercentText(IMPROVE_INFO['STR_P']))
             myUI.viewParameter_IMPROVE_STR_UNIQUE.setText(IMPROVE_TEXT + toPercentText(IMPROVE_INFO['STR_UNIQUE']))
+            
+            myUI.viewParameter_IMPROVE_HP_CLEAR.setText(IMPROVE_TEXT + toPercentText(IMPROVE_INFO['HP_CLEAR']))
+            myUI.viewParameter_IMPROVE_HP_P.setText(IMPROVE_TEXT + toPercentText(IMPROVE_INFO['HP_P']))
+            myUI.viewParameter_IMPROVE_HP_UNIQUE.setText(IMPROVE_TEXT + toPercentText(IMPROVE_INFO['HP_UNIQUE']))
 
-            myUI.viewParameter_IMPROVE_DEX_CLEAR.setText(IMPROVE_TEXT + toPercentText(IMPROVE_INFO['DEX_CLEAR']))
-            myUI.viewParameter_IMPROVE_DEX_P.setText(IMPROVE_TEXT + toPercentText(IMPROVE_INFO['DEX_P']))
-            myUI.viewParameter_IMPROVE_DEX_UNIQUE.setText(IMPROVE_TEXT + toPercentText(IMPROVE_INFO['DEX_UNIQUE']))
+            # myUI.viewParameter_IMPROVE_DEX_CLEAR.setText(IMPROVE_TEXT + toPercentText(IMPROVE_INFO['DEX_CLEAR']))
+            # myUI.viewParameter_IMPROVE_DEX_P.setText(IMPROVE_TEXT + toPercentText(IMPROVE_INFO['DEX_P']))
+            # myUI.viewParameter_IMPROVE_DEX_UNIQUE.setText(IMPROVE_TEXT + toPercentText(IMPROVE_INFO['DEX_UNIQUE']))
 
-            myUI.viewParameter_IMPROVE_INT_CLEAR.setText(IMPROVE_TEXT + toPercentText(IMPROVE_INFO['INT_CLEAR']))
-            myUI.viewParameter_IMPROVE_INT_P.setText(IMPROVE_TEXT + toPercentText(IMPROVE_INFO['INT_P']))
-            myUI.viewParameter_IMPROVE_INT_UNIQUE.setText(IMPROVE_TEXT + toPercentText(IMPROVE_INFO['INT_UNIQUE']))
+            # myUI.viewParameter_IMPROVE_INT_CLEAR.setText(IMPROVE_TEXT + toPercentText(IMPROVE_INFO['INT_CLEAR']))
+            # myUI.viewParameter_IMPROVE_INT_P.setText(IMPROVE_TEXT + toPercentText(IMPROVE_INFO['INT_P']))
+            # myUI.viewParameter_IMPROVE_INT_UNIQUE.setText(IMPROVE_TEXT + toPercentText(IMPROVE_INFO['INT_UNIQUE']))
 
-            myUI.viewParameter_IMPROVE_LUK_CLEAR.setText(IMPROVE_TEXT + toPercentText(IMPROVE_INFO['LUK_CLEAR']))
-            myUI.viewParameter_IMPROVE_LUK_P.setText(IMPROVE_TEXT + toPercentText(IMPROVE_INFO['LUK_P']))
-            myUI.viewParameter_IMPROVE_LUK_UNIQUE.setText(IMPROVE_TEXT + toPercentText(IMPROVE_INFO['LUK_UNIQUE']))
+            # myUI.viewParameter_IMPROVE_LUK_CLEAR.setText(IMPROVE_TEXT + toPercentText(IMPROVE_INFO['LUK_CLEAR']))
+            # myUI.viewParameter_IMPROVE_LUK_P.setText(IMPROVE_TEXT + toPercentText(IMPROVE_INFO['LUK_P']))
+            # myUI.viewParameter_IMPROVE_LUK_UNIQUE.setText(IMPROVE_TEXT + toPercentText(IMPROVE_INFO['LUK_UNIQUE']))
 
             myUI.viewParameter_IMPROVE_ALL_P.setText(IMPROVE_TEXT + toPercentText(IMPROVE_INFO['ALL_P']))
 
@@ -529,49 +571,61 @@ class AppWindow(QtWidgets.QDialog):
             
             if(RANGE_TYPE == '不吃％力'): 
                 myUI.viewParameter_IMPROVE_VALUE_AS.setText(PREFIX_TXT + str(round(STATE_INFO['STR_UNIQUE'],3)))
+
+            if(RANGE_TYPE == 'HP'): 
+                myUI.viewParameter_IMPROVE_VALUE_AS.setText(PREFIX_TXT + str(round(STATE_INFO['HP_CLEAR'],3)))
             
-            if(RANGE_TYPE == '敏捷'): 
-                myUI.viewParameter_IMPROVE_VALUE_AS.setText(PREFIX_TXT + str(round(STATE_INFO['DEX_CLEAR'],3)))
+            if(RANGE_TYPE == '％HP'): 
+                myUI.viewParameter_IMPROVE_VALUE_AS.setText(PREFIX_TXT + str(round(STATE_INFO['HP_P']*100,3)))
+            
+            if(RANGE_TYPE == '不吃％HP'): 
+                myUI.viewParameter_IMPROVE_VALUE_AS.setText(PREFIX_TXT + str(round(STATE_INFO['HP_UNIQUE'],3)))
+            
+            # if(RANGE_TYPE == '敏捷'): 
+            #     myUI.viewParameter_IMPROVE_VALUE_AS.setText(PREFIX_TXT + str(round(STATE_INFO['DEX_CLEAR'],3)))
                 
-            if(RANGE_TYPE == '％敏捷'): 
-                myUI.viewParameter_IMPROVE_VALUE_AS.setText(PREFIX_TXT + str(round(STATE_INFO['DEX_P']*100,3)))
+            # if(RANGE_TYPE == '％敏捷'): 
+            #     myUI.viewParameter_IMPROVE_VALUE_AS.setText(PREFIX_TXT + str(round(STATE_INFO['DEX_P']*100,3)))
             
-            if(RANGE_TYPE == '不吃％敏'): 
-                myUI.viewParameter_IMPROVE_VALUE_AS.setText(PREFIX_TXT + str(round(STATE_INFO['DEX_UNIQUE'],3)))
+            # if(RANGE_TYPE == '不吃％敏'): 
+            #     myUI.viewParameter_IMPROVE_VALUE_AS.setText(PREFIX_TXT + str(round(STATE_INFO['DEX_UNIQUE'],3)))
                 
-            if(RANGE_TYPE == '智力'): 
-                myUI.viewParameter_IMPROVE_VALUE_AS.setText(PREFIX_TXT + str(round(STATE_INFO['INT_CLEAR'],3)))
+            # if(RANGE_TYPE == '智力'): 
+            #     myUI.viewParameter_IMPROVE_VALUE_AS.setText(PREFIX_TXT + str(round(STATE_INFO['INT_CLEAR'],3)))
             
-            if(RANGE_TYPE == '％智力'): 
-                myUI.viewParameter_IMPROVE_VALUE_AS.setText(PREFIX_TXT + str(round(STATE_INFO['INT_P']*100,3)))
+            # if(RANGE_TYPE == '％智力'): 
+            #     myUI.viewParameter_IMPROVE_VALUE_AS.setText(PREFIX_TXT + str(round(STATE_INFO['INT_P']*100,3)))
             
-            if(RANGE_TYPE == '不吃％智'): 
-                myUI.viewParameter_IMPROVE_VALUE_AS.setText(PREFIX_TXT + str(round(STATE_INFO['INT_UNIQUE'],3)))
+            # if(RANGE_TYPE == '不吃％智'): 
+            #     myUI.viewParameter_IMPROVE_VALUE_AS.setText(PREFIX_TXT + str(round(STATE_INFO['INT_UNIQUE'],3)))
                 
-            if(RANGE_TYPE == '幸運'): 
-                myUI.viewParameter_IMPROVE_VALUE_AS.setText(PREFIX_TXT + str(round(STATE_INFO['LUK_CLEAR'],3)))
+            # if(RANGE_TYPE == '幸運'): 
+            #     myUI.viewParameter_IMPROVE_VALUE_AS.setText(PREFIX_TXT + str(round(STATE_INFO['LUK_CLEAR'],3)))
                 
-            if(RANGE_TYPE == '％幸運'): 
-                myUI.viewParameter_IMPROVE_VALUE_AS.setText(PREFIX_TXT + str(round(STATE_INFO['LUK_P']*100,3)))
+            # if(RANGE_TYPE == '％幸運'): 
+            #     myUI.viewParameter_IMPROVE_VALUE_AS.setText(PREFIX_TXT + str(round(STATE_INFO['LUK_P']*100,3)))
             
-            if(RANGE_TYPE == '不吃％幸'): 
-                myUI.viewParameter_IMPROVE_VALUE_AS.setText(PREFIX_TXT + str(round(STATE_INFO['LUK_UNIQUE'],3)))
+            # if(RANGE_TYPE == '不吃％幸'): 
+            #     myUI.viewParameter_IMPROVE_VALUE_AS.setText(PREFIX_TXT + str(round(STATE_INFO['LUK_UNIQUE'],3)))
 
             # 預估值
             myUI.viewParameter_ESTIMATE_STR.setText(toFloorStr(ESTIMATE_INFO['STR']))
             myUI.viewParameter_ESTIMATE_STR_P.setText(toFloorStr(ESTIMATE_INFO['STR_P']*100))
+            
+            myUI.viewParameter_ESTIMATE_HP.setText(toFloorStr(ESTIMATE_INFO['HP']))
+            myUI.viewParameter_ESTIMATE_HP_P.setText(toFloorStr(ESTIMATE_INFO['HP_P']*100))
 
-            myUI.viewParameter_ESTIMATE_DEX.setText(toFloorStr(ESTIMATE_INFO['DEX']))
-            myUI.viewParameter_ESTIMATE_DEX_P.setText(toFloorStr(ESTIMATE_INFO['DEX_P']*100))
+            # myUI.viewParameter_ESTIMATE_DEX.setText(toFloorStr(ESTIMATE_INFO['DEX']))
+            # myUI.viewParameter_ESTIMATE_DEX_P.setText(toFloorStr(ESTIMATE_INFO['DEX_P']*100))
 
-            myUI.viewParameter_ESTIMATE_INT.setText(toFloorStr(ESTIMATE_INFO['INT']))
-            myUI.viewParameter_ESTIMATE_INT_P.setText(toFloorStr(ESTIMATE_INFO['INT_P']*100))
+            # myUI.viewParameter_ESTIMATE_INT.setText(toFloorStr(ESTIMATE_INFO['INT']))
+            # myUI.viewParameter_ESTIMATE_INT_P.setText(toFloorStr(ESTIMATE_INFO['INT_P']*100))
 
-            myUI.viewParameter_ESTIMATE_LUK.setText(toFloorStr(ESTIMATE_INFO['LUK']))
-            myUI.viewParameter_ESTIMATE_LUK_P.setText(toFloorStr(ESTIMATE_INFO['LUK_P']*100))
+            # myUI.viewParameter_ESTIMATE_LUK.setText(toFloorStr(ESTIMATE_INFO['LUK']))
+            # myUI.viewParameter_ESTIMATE_LUK_P.setText(toFloorStr(ESTIMATE_INFO['LUK_P']*100))
 
             myUI.viewParameter_ESTIMATE_ATTACK.setText(toFloorStr(ESTIMATE_INFO['ATTACK']))
-            myUI.viewParameter_ESTIMATE_ATTACK_P.setText(str(round(ESTIMATE_INFO['ATTACK_P']*100))
+            myUI.viewParameter_ESTIMATE_ATTACK_P.setText(str(round(ESTIMATE_INFO['ATTACK_P']*100)))
 
             myUI.viewParameter_ESTIMATE_DMG_P.setText(str(round(ESTIMATE_INFO['DMG_P']*100,2)))
             myUI.viewParameter_ESTIMATE_BOSS_P.setText(str(round(ESTIMATE_INFO['BOSS_P']*100,2)))
@@ -583,7 +637,7 @@ class AppWindow(QtWidgets.QDialog):
             pass
 
     # event: 計算塔戒
-    def calc_SeedRing(me):
+    # def calc_SeedRing(me):
         try:
             myCharactor = me.myCharactor
             myUI = me.myUI
