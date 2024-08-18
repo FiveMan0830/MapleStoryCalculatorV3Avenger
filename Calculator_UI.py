@@ -35,7 +35,6 @@ class Calculator_UI():
         me.btnAbility_SelectFile.setText('選擇檔案')
         
         me.viewAbility_LEVEL = me.makeField(page, QtWidgets.QLineEdit(page), 15, 60, 270, 24, '等級', 90)
-        # me.viewAbility_LEVEL.textChanged.connect(me.updateMapleValue)
         
         me.viewAbility_CLASS  = me.makeField(page, QtWidgets.QLineEdit(page), 300, 60, 270, 24, '職業', 90).setEnabled(False)
 
@@ -52,29 +51,14 @@ class Calculator_UI():
         # 4大屬性
         me.viewAbility_HP_CLEAR = me.makeField(page, QtWidgets.QLineEdit(page), 15, 210, 200, 24, '吃% HP', 90)
         me.viewAbility_STR_CLEAR = me.makeField(page, QtWidgets.QLineEdit(page), 15, 240, 200, 24, '吃% STR', 90)
-        # me.viewAbility_DEX_CLEAR = me.makeField(page, QtWidgets.QLineEdit(page), 15, 240, 200, 24, '吃% DEX', 90)
-        # me.viewAbility_INT_CLEAR = me.makeField(page, QtWidgets.QLineEdit(page), 15, 270, 200, 24, '吃% INT', 90)
-        # me.viewAbility_LUK_CLEAR = me.makeField(page, QtWidgets.QLineEdit(page), 15, 300, 200, 24, '吃% LUK', 90)
 
         me.viewAbility_HP_P = me.makeField(page, QtWidgets.QLineEdit(page), 230, 210, 125, 24, 'HP%', 55, '％')
         me.viewAbility_STR_P = me.makeField(page, QtWidgets.QLineEdit(page), 230, 240, 125, 24, 'STR%', 55, '％')
-        # me.viewAbility_DEX_P = me.makeField(page, QtWidgets.QLineEdit(page), 230, 240, 125, 24, 'DEX%', 55, '％')
-        # me.viewAbility_INT_P = me.makeField(page, QtWidgets.QLineEdit(page), 230, 270, 125, 24, 'INT%', 55, '％')
-        # me.viewAbility_LUK_P = me.makeField(page, QtWidgets.QLineEdit(page), 230, 300, 125, 24, 'LUK%', 55, '％')
 
         me.viewAbility_HP_UNIQUE = me.makeField(page, QtWidgets.QLineEdit(page), 370, 210, 200, 24, '不吃% HP', 100)
         me.viewAbility_STR_UNIQUE = me.makeField(page, QtWidgets.QLineEdit(page), 370, 240, 200, 24, '不吃% STR', 100)
-        # me.viewAbility_DEX_UNIQUE = me.makeField(page, QtWidgets.QLineEdit(page), 370, 240, 200, 24, '不吃% DEX', 100)
-        # me.viewAbility_INT_UNIQUE = me.makeField(page, QtWidgets.QLineEdit(page), 370, 270, 200, 24, '不吃% INT', 100)
-        # me.viewAbility_LUK_UNIQUE = me.makeField(page, QtWidgets.QLineEdit(page), 370, 300, 200, 24, '不吃% LUK', 100)
 
         me.viewAbility_DEFENSE_P = me.makeField(page, QtWidgets.QLineEdit(page), 15, 310, 270, 24, '怪物防禦', 90, '％')
-        
-        # me.viewAbility_MAPLE_15 = me.makeField(page, QtWidgets.QLabel(page), 300, 370, 135, 24)
-        # me.viewAbility_MAPLE_15.setText('楓祝15% = 0')
-
-        # me.viewAbility_MAPLE_16 = me.makeField(page, QtWidgets.QLabel(page), 435, 370, 135, 24)
-        # me.viewAbility_MAPLE_16.setText('楓祝16% = 0')
 
         return page
     
@@ -90,17 +74,11 @@ class Calculator_UI():
             '％全屬 =',
             'HP　 =', '%HP　 =', '不吃%HP　 =',
             '力量　 =', '％力量 =', '不吃％力 =',
-            # '敏捷　 =', '％敏捷 =', '不吃％敏 =',
-            # '智力　 =', '％智力 =', '不吃％智 =',
-            # '幸運　 =', '％幸運 =', '不吃％幸 =',
         ]
 
         PARAMETER_TYPE = [
             'HP　', '%HP', '不吃%HP',
             '力量　', '％力量', '不吃％力',
-            # '敏捷　', '％敏捷', '不吃％敏',
-            # '智力　', '％智力', '不吃％智',
-            # '幸運　', '％幸運', '不吃％幸',
             '％全屬',
             '攻擊　', '％攻擊',
             '％總傷', '％Ｂ傷',
@@ -123,23 +101,11 @@ class Calculator_UI():
         me.makeField(page, QtWidgets.QLineEdit(page), 260, 45, 100, 24, '', 0, '　HP', 50).setEnabled(False)
         me.makeField(page, QtWidgets.QLineEdit(page), 365, 45, 100, 24, '', 0, '％HP', 50).setEnabled(False)
         me.makeField(page, QtWidgets.QLineEdit(page), 470, 45, 100, 24, '', 0, '不吃％HP', 50).setEnabled(False)
-        # me.makeField(page, QtWidgets.QLineEdit(page), 260, 45, 100, 24, '', 0, '　敏捷', 50).setEnabled(False)
-        # me.makeField(page, QtWidgets.QLineEdit(page), 365, 45, 100, 24, '', 0, '％敏捷', 50).setEnabled(False)
-        # me.makeField(page, QtWidgets.QLineEdit(page), 470, 45, 100, 24, '', 0, '不吃％敏', 50).setEnabled(False)
         
         me.makeField(page, QtWidgets.QLineEdit(page), 50, 75, 100, 24, '', 0, '％總傷', 50).setEnabled(False)
         me.makeField(page, QtWidgets.QLineEdit(page), 155, 75, 100, 24, '', 0, '％BOSS', 50).setEnabled(False)
         me.makeField(page, QtWidgets.QLineEdit(page), 260, 75, 100, 24, '', 0, '％爆傷', 50).setEnabled(False)
         me.makeField(page, QtWidgets.QLineEdit(page), 365, 75, 100, 24, '', 0, '％無視', 50).setEnabled(False)
-        # me.makeField(page, QtWidgets.QLineEdit(page), 260, 75, 100, 24, '', 0, '　智力', 50).setEnabled(False)
-        # me.makeField(page, QtWidgets.QLineEdit(page), 365, 75, 100, 24, '', 0, '％智力', 50).setEnabled(False)
-        # me.makeField(page, QtWidgets.QLineEdit(page), 470, 75, 100, 24, '', 0, '不吃％智', 50).setEnabled(False)
-        
-        # me.makeField(page, QtWidgets.QLineEdit(page), 50, 105, 100, 24, '', 0, '％爆傷', 50).setEnabled(False)
-        # me.makeField(page, QtWidgets.QLineEdit(page), 155, 105, 100, 24, '', 0, '％無視', 50).setEnabled(False)
-        # me.makeField(page, QtWidgets.QLineEdit(page), 260, 105, 100, 24, '', 0, '　幸運', 50).setEnabled(False)
-        # me.makeField(page, QtWidgets.QLineEdit(page), 365, 105, 100, 24, '', 0, '％幸運', 50).setEnabled(False)
-        # me.makeField(page, QtWidgets.QLineEdit(page), 470, 105, 100, 24, '', 0, '不吃％幸', 50).setEnabled(False)
 
         me.viewParameter_EQUIVALENT_ALL_P       = me.makeField(page, QtWidgets.QLabel(page), 5 + 155, 15, 100, 24)
         me.viewParameter_EQUIVALENT_STR_CLEAR   = me.makeField(page, QtWidgets.QLabel(page), 5 + 260, 15, 100, 24)
@@ -148,24 +114,15 @@ class Calculator_UI():
         
         me.viewParameter_EQUIVALENT_Att         = me.makeField(page, QtWidgets.QLabel(page), 5 + 50 , 45, 100, 24)
         me.viewParameter_EQUIVALENT_Att_P       = me.makeField(page, QtWidgets.QLabel(page), 5 + 155, 45, 100, 24)
-        me.viewParameter_EQUIVALENT_HP_CLEAR   = me.makeField(page, QtWidgets.QLabel(page), 5 + 260, 45, 100, 24)
-        me.viewParameter_EQUIVALENT_HP_P       = me.makeField(page, QtWidgets.QLabel(page), 5 + 365, 45, 100, 24)
-        me.viewParameter_EQUIVALENT_HP_UNIQUE  = me.makeField(page, QtWidgets.QLabel(page), 5 + 470, 45, 100, 24)
-        # me.viewParameter_EQUIVALENT_DEX_CLEAR   = me.makeField(page, QtWidgets.QLabel(page), 5 + 260, 45, 100, 24)
-        # me.viewParameter_EQUIVALENT_DEX_P       = me.makeField(page, QtWidgets.QLabel(page), 5 + 365, 45, 100, 24)
-        # me.viewParameter_EQUIVALENT_DEX_UNIQUE  = me.makeField(page, QtWidgets.QLabel(page), 5 + 470, 45, 100, 24)
+        me.viewParameter_EQUIVALENT_HP_CLEAR    = me.makeField(page, QtWidgets.QLabel(page), 5 + 260,  45, 100, 24)
+        me.viewParameter_EQUIVALENT_HP_P        = me.makeField(page, QtWidgets.QLabel(page), 5 + 365,  45, 100, 24)
+        me.viewParameter_EQUIVALENT_HP_UNIQUE   = me.makeField(page, QtWidgets.QLabel(page), 5 + 470,  45, 100, 24)
 
         me.viewParameter_EQUIVALENT_Dmg_P       = me.makeField(page, QtWidgets.QLabel(page), 5 + 50 , 75, 100, 24)
         me.viewParameter_EQUIVALENT_Boss_P      = me.makeField(page, QtWidgets.QLabel(page), 5 + 155, 75, 100, 24)
-        # me.viewParameter_EQUIVALENT_INT_CLEAR   = me.makeField(page, QtWidgets.QLabel(page), 5 + 260, 75, 100, 24)
-        # me.viewParameter_EQUIVALENT_INT_P       = me.makeField(page, QtWidgets.QLabel(page), 5 + 365, 75, 100, 24)
-        # me.viewParameter_EQUIVALENT_INT_UNIQUE  = me.makeField(page, QtWidgets.QLabel(page), 5 + 470, 75, 100, 24)
         
-        me.viewParameter_EQUIVALENT_Strike_P    = me.makeField(page, QtWidgets.QLabel(page), 5 + 50 ,105, 100, 24)
-        me.viewParameter_EQUIVALENT_Ignore_P    = me.makeField(page, QtWidgets.QLabel(page), 5 + 155,105, 100, 24)
-        # me.viewParameter_EQUIVALENT_LUK_CLEAR    = me.makeField(page, QtWidgets.QLabel(page), 5 + 260,105, 100, 24)
-        # me.viewParameter_EQUIVALENT_LUK_P       = me.makeField(page, QtWidgets.QLabel(page), 5 + 365,105, 100, 24)
-        # me.viewParameter_EQUIVALENT_LUK_UNIQUE  = me.makeField(page, QtWidgets.QLabel(page), 5 + 470,105, 100, 24)
+        me.viewParameter_EQUIVALENT_Strike_P    = me.makeField(page, QtWidgets.QLabel(page), 5 + 260 , 75, 100, 24)
+        me.viewParameter_EQUIVALENT_Ignore_P    = me.makeField(page, QtWidgets.QLabel(page), 5 + 365, 75, 100, 24)
         
         # 單項增幅
         me.viewParameter_IMPROVE_VALUE_STR_CLEAR    = me.makeField(page, QtWidgets.QLineEdit(page), 15, 140, 115, 24, '力量　 增加', 65)
@@ -174,15 +131,6 @@ class Calculator_UI():
         me.viewParameter_IMPROVE_VALUE_HP_CLEAR    = me.makeField(page, QtWidgets.QLineEdit(page), 15, 230, 115, 24, 'HP　 增加', 65)
         me.viewParameter_IMPROVE_VALUE_HP_P        = me.makeField(page, QtWidgets.QLineEdit(page), 15, 260, 115, 24, 'HP％ 增加', 65, '%')
         me.viewParameter_IMPROVE_VALUE_HP_UNIQUE   = me.makeField(page, QtWidgets.QLineEdit(page), 15, 290, 115, 24, '不吃％HP 增加', 65)
-        # me.viewParameter_IMPROVE_VALUE_DEX_CLEAR    = me.makeField(page, QtWidgets.QLineEdit(page), 15, 230, 115, 24, '敏捷　 增加', 65)
-        # me.viewParameter_IMPROVE_VALUE_DEX_P        = me.makeField(page, QtWidgets.QLineEdit(page), 15, 260, 115, 24, '敏捷％ 增加', 65, '%')
-        # me.viewParameter_IMPROVE_VALUE_DEX_UNIQUE   = me.makeField(page, QtWidgets.QLineEdit(page), 15, 290, 115, 24, '不吃％敏 增加', 65)
-        # me.viewParameter_IMPROVE_VALUE_INT_CLEAR    = me.makeField(page, QtWidgets.QLineEdit(page), 240, 140, 115, 24, '智力　 增加', 65)
-        # me.viewParameter_IMPROVE_VALUE_INT_P        = me.makeField(page, QtWidgets.QLineEdit(page), 240, 170, 115, 24, '智力％ 增加', 65, '%')
-        # me.viewParameter_IMPROVE_VALUE_INT_UNIQUE   = me.makeField(page, QtWidgets.QLineEdit(page), 240, 200, 115, 24, '不吃％智 增加', 65)
-        # me.viewParameter_IMPROVE_VALUE_LUK_CLEAR    = me.makeField(page, QtWidgets.QLineEdit(page), 240, 230, 115, 24, '幸運　 增加', 65)
-        # me.viewParameter_IMPROVE_VALUE_LUK_P        = me.makeField(page, QtWidgets.QLineEdit(page), 240, 260, 115, 24, '幸運％ 增加', 65, '%')
-        # me.viewParameter_IMPROVE_VALUE_LUK_UNIQUE   = me.makeField(page, QtWidgets.QLineEdit(page), 240, 290, 115, 24, '不吃％幸 增加', 65)
         me.viewParameter_IMPROVE_VALUE_ALL_P        = me.makeField(page, QtWidgets.QLineEdit(page), 15, 320, 115, 24, '全屬％ 增加', 65, '%')
 
         me.viewParameter_IMPROVE_VALUE_DMG_P    = me.makeField(page, QtWidgets.QLineEdit(page), 15, 350, 115, 24, '總傷％ 增加', 65, '%')
@@ -191,8 +139,6 @@ class Calculator_UI():
         me.viewParameter_IMPROVE_VALUE_IGNORE_P = me.makeField(page, QtWidgets.QLineEdit(page), 15, 440, 115, 24, '無視％ 增加', 65, '%')
         me.viewParameter_IMPROVE_VALUE_ATT      = me.makeField(page, QtWidgets.QLineEdit(page), 240, 140, 115, 24, '攻擊　 增加', 65)
         me.viewParameter_IMPROVE_VALUE_ATT_P    = me.makeField(page, QtWidgets.QLineEdit(page), 240, 170, 115, 24, '攻擊％ 增加', 65, '%')
-        # me.viewParameter_IMPROVE_VALUE_ATT      = me.makeField(page, QtWidgets.QLineEdit(page), 240, 320, 115, 24, '攻擊　 增加', 65)
-        # me.viewParameter_IMPROVE_VALUE_ATT_P    = me.makeField(page, QtWidgets.QLineEdit(page), 240, 350, 115, 24, '攻擊％ 增加', 65, '%')
 
         me.viewParameter_IMPROVE_STR_CLEAR  = me.makeField(page, QtWidgets.QLabel(page), 140, 140, 120, 24)
         me.viewParameter_IMPROVE_STR_P      = me.makeField(page, QtWidgets.QLabel(page), 140, 170, 120, 24)
@@ -200,15 +146,6 @@ class Calculator_UI():
         me.viewParameter_IMPROVE_HP_CLEAR  = me.makeField(page, QtWidgets.QLabel(page), 140, 230, 120, 24)
         me.viewParameter_IMPROVE_HP_P      = me.makeField(page, QtWidgets.QLabel(page), 140, 260, 120, 24)
         me.viewParameter_IMPROVE_HP_UNIQUE = me.makeField(page, QtWidgets.QLabel(page), 140, 290, 120, 24)
-        # me.viewParameter_IMPROVE_DEX_CLEAR  = me.makeField(page, QtWidgets.QLabel(page), 140, 230, 120, 24)
-        # me.viewParameter_IMPROVE_DEX_P      = me.makeField(page, QtWidgets.QLabel(page), 140, 260, 120, 24)
-        # me.viewParameter_IMPROVE_DEX_UNIQUE = me.makeField(page, QtWidgets.QLabel(page), 140, 290, 120, 24)
-        # me.viewParameter_IMPROVE_INT_CLEAR  = me.makeField(page, QtWidgets.QLabel(page), 360, 140, 120, 24)
-        # me.viewParameter_IMPROVE_INT_P      = me.makeField(page, QtWidgets.QLabel(page), 360, 170, 120, 24)
-        # me.viewParameter_IMPROVE_INT_UNIQUE = me.makeField(page, QtWidgets.QLabel(page), 360, 200, 120, 24)
-        # me.viewParameter_IMPROVE_LUK_CLEAR  = me.makeField(page, QtWidgets.QLabel(page), 360, 230, 120, 24)
-        # me.viewParameter_IMPROVE_LUK_P      = me.makeField(page, QtWidgets.QLabel(page), 360, 260, 120, 24)
-        # me.viewParameter_IMPROVE_LUK_UNIQUE = me.makeField(page, QtWidgets.QLabel(page), 360, 290, 120, 24)
         me.viewParameter_IMPROVE_ALL_P      = me.makeField(page, QtWidgets.QLabel(page), 140, 320, 120, 24)
 
         me.viewParameter_IMPROVE_ATT      = me.makeField(page, QtWidgets.QLabel(page), 360, 140, 120, 24)
@@ -246,8 +183,6 @@ class Calculator_UI():
         # 推估數值
         me.makeField(page, QtWidgets.QLineEdit(page), 460, 140 + 36 * 0, 110, 36).setEnabled(False)
         me.makeField(page, QtWidgets.QLineEdit(page), 460, 140 + 36 * 1, 110, 36).setEnabled(False)
-        # me.makeField(page, QtWidgets.QLineEdit(page), 460, 140 + 36 * 2, 110, 36).setEnabled(False)
-        # me.makeField(page, QtWidgets.QLineEdit(page), 460, 140 + 36 * 3, 110, 36).setEnabled(False)
         me.makeField(page, QtWidgets.QLineEdit(page), 460, 153 + 36 * 4, 110,107).setEnabled(False)
 
         me.viewParameter_ESTIMATE_STR   = me.makeField(page, QtWidgets.QLabel(page), 462, 140 + 18 * 0, 108, 18, 'STR' , 40, '' , 19)
@@ -255,15 +190,6 @@ class Calculator_UI():
 
         me.viewParameter_ESTIMATE_HP   = me.makeField(page, QtWidgets.QLabel(page), 462, 140 + 18 * 2, 108, 18, 'HP' , 40, '' , 19)
         me.viewParameter_ESTIMATE_HP_P = me.makeField(page, QtWidgets.QLabel(page), 462, 140 + 18 * 3, 108, 18, 'HP%', 40, '%', 19)
-
-        # me.viewParameter_ESTIMATE_DEX   = me.makeField(page, QtWidgets.QLabel(page), 462, 140 + 18 * 2, 108, 18, 'DEX' , 40, '' , 19)
-        # me.viewParameter_ESTIMATE_DEX_P = me.makeField(page, QtWidgets.QLabel(page), 462, 140 + 18 * 3, 108, 18, 'DEX%', 40, '%', 19)
-
-        # me.viewParameter_ESTIMATE_INT   = me.makeField(page, QtWidgets.QLabel(page), 462, 140 + 18 * 4, 108, 18, 'INT' , 40, '' , 19)
-        # me.viewParameter_ESTIMATE_INT_P = me.makeField(page, QtWidgets.QLabel(page), 462, 140 + 18 * 5, 108, 18, 'INT%', 40, '%', 19)
-
-        # me.viewParameter_ESTIMATE_LUK   = me.makeField(page, QtWidgets.QLabel(page), 462, 140 + 18 * 6, 108, 18, 'LUK' , 40, '' , 19)
-        # me.viewParameter_ESTIMATE_LUK_P = me.makeField(page, QtWidgets.QLabel(page), 462, 140 + 18 * 7, 108, 18, 'LUK%', 40, '%', 19)
 
         me.viewParameter_ESTIMATE_ATTACK   = me.makeField(page, QtWidgets.QLabel(page), 462, 153 + 18 * 8, 108, 18, '攻擊' , 40, '' , 19)
         me.viewParameter_ESTIMATE_ATTACK_P = me.makeField(page, QtWidgets.QLabel(page), 462, 153 + 18 * 9, 108, 18, '攻擊%', 40, '%', 19)

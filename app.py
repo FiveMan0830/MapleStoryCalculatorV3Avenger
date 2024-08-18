@@ -19,13 +19,6 @@ class AppWindow(QtWidgets.QDialog):
     def loadUIConfig(me):
         myCharacter = Character()
         myUI = me.myUI
-
-        # 載入職業資訊
-        # myUI.viewAbility_CLASS.addItems(myCharactor.getClassList())
-        # myUI.viewAbility_WP.addItems(myCharactor.getWPlist())
-
-        # page: 能力值設定
-        # myUI.viewAbility_CLASS.activated.connect(me.updateClassInfo)
         
         myUI.btnAbility_SelectFile.clicked.connect(me.doSelectFile)
         myUI.btnAbility_SaveFile.clicked.connect(me.doSaveFile)
@@ -41,15 +34,6 @@ class AppWindow(QtWidgets.QDialog):
         myUI.viewParameter_IMPROVE_VALUE_HP_CLEAR.textChanged.connect(me.calc_Improve)
         myUI.viewParameter_IMPROVE_VALUE_HP_P.textChanged.connect(me.calc_Improve)
         myUI.viewParameter_IMPROVE_VALUE_HP_UNIQUE.textChanged.connect(me.calc_Improve)
-        # myUI.viewParameter_IMPROVE_VALUE_DEX_CLEAR.textChanged.connect(me.calc_Improve)
-        # myUI.viewParameter_IMPROVE_VALUE_DEX_P.textChanged.connect(me.calc_Improve)
-        # myUI.viewParameter_IMPROVE_VALUE_DEX_UNIQUE.textChanged.connect(me.calc_Improve)
-        # myUI.viewParameter_IMPROVE_VALUE_INT_CLEAR.textChanged.connect(me.calc_Improve)
-        # myUI.viewParameter_IMPROVE_VALUE_INT_P.textChanged.connect(me.calc_Improve)
-        # myUI.viewParameter_IMPROVE_VALUE_INT_UNIQUE.textChanged.connect(me.calc_Improve)
-        # myUI.viewParameter_IMPROVE_VALUE_LUK_CLEAR.textChanged.connect(me.calc_Improve)
-        # myUI.viewParameter_IMPROVE_VALUE_LUK_P.textChanged.connect(me.calc_Improve)
-        # myUI.viewParameter_IMPROVE_VALUE_LUK_UNIQUE.textChanged.connect(me.calc_Improve)
         myUI.viewParameter_IMPROVE_VALUE_ALL_P.textChanged.connect(me.calc_Improve)
         myUI.viewParameter_IMPROVE_VALUE_ATT.textChanged.connect(me.calc_Improve)
         myUI.viewParameter_IMPROVE_VALUE_ATT_P.textChanged.connect(me.calc_Improve)
@@ -59,36 +43,12 @@ class AppWindow(QtWidgets.QDialog):
         myUI.viewParameter_IMPROVE_VALUE_IGNORE_P.textChanged.connect(me.calc_Improve)
         myUI.viewParameter_IMPROVE_VALUE_AS_PARAMETER.activated.connect(me.calc_Improve)
 
-        # page: 塔戒
-        # myUI.viewSeedRing_STR.textChanged.connect(me.calc_SeedRing)
-        # myUI.viewSeedRing_STR_P.textChanged.connect(me.calc_SeedRing)
-        # myUI.viewSeedRing_DEX.textChanged.connect(me.calc_SeedRing)
-        # myUI.viewSeedRing_DEX_P.textChanged.connect(me.calc_SeedRing)
-        # myUI.viewSeedRing_INT.textChanged.connect(me.calc_SeedRing)
-        # myUI.viewSeedRing_INT_P.textChanged.connect(me.calc_SeedRing)
-        # myUI.viewSeedRing_LUK.textChanged.connect(me.calc_SeedRing)
-        # myUI.viewSeedRing_LUK_P.textChanged.connect(me.calc_SeedRing)
-        # myUI.viewSeedRing_ALL_P.textChanged.connect(me.calc_SeedRing)
-        # myUI.viewSeedRing_ATTACK.textChanged.connect(me.calc_SeedRing)
-        # myUI.viewSeedRing_ATTACK_P.textChanged.connect(me.calc_SeedRing)
-        # myUI.viewSeedRing_DMG_P.textChanged.connect(me.calc_SeedRing)
-        # myUI.viewSeedRing_STRIKE_P.textChanged.connect(me.calc_SeedRing)
-        # myUI.viewSeedRing_IGNORE_P.textChanged.connect(me.calc_SeedRing)
-        # myUI.viewSeedRing_WP_ATTACK.textChanged.connect(me.calc_SeedRing)
-        # # myUI.viewSeedRing_ALL_IN.textChanged.connect(me.calc_SeedRing)
-        # myUI.viewSeedRing_TIME_VALUE.valueChanged.connect(me.calc_SeedRing)
 
         # page: 裝備變更
         myUI.viewEquipment_origin_STR.textChanged.connect(me.calc_Equipment)
         myUI.viewEquipment_origin_STR_P.textChanged.connect(me.calc_Equipment)
         myUI.viewEquipment_origin_HP.textChanged.connect(me.calc_Equipment)
         myUI.viewEquipment_origin_HP_P.textChanged.connect(me.calc_Equipment)
-        # myUI.viewEquipment_origin_DEX.textChanged.connect(me.calc_Equipment)
-        # myUI.viewEquipment_origin_DEX_P.textChanged.connect(me.calc_Equipment)
-        # myUI.viewEquipment_origin_INT.textChanged.connect(me.calc_Equipment)
-        # myUI.viewEquipment_origin_INT_P.textChanged.connect(me.calc_Equipment)
-        # myUI.viewEquipment_origin_LUK.textChanged.connect(me.calc_Equipment)
-        # myUI.viewEquipment_origin_LUK_P.textChanged.connect(me.calc_Equipment)
         myUI.viewEquipment_origin_ALL_P.textChanged.connect(me.calc_Equipment)
         myUI.viewEquipment_origin_ATTACK.textChanged.connect(me.calc_Equipment)
         myUI.viewEquipment_origin_ATTACK_P.textChanged.connect(me.calc_Equipment)
@@ -100,12 +60,6 @@ class AppWindow(QtWidgets.QDialog):
         myUI.viewEquipment_Set1_STR_P.textChanged.connect(me.calc_Equipment)
         myUI.viewEquipment_Set1_HP.textChanged.connect(me.calc_Equipment)
         myUI.viewEquipment_Set1_HP_P.textChanged.connect(me.calc_Equipment)
-        # myUI.viewEquipment_Set1_DEX.textChanged.connect(me.calc_Equipment)
-        # myUI.viewEquipment_Set1_DEX_P.textChanged.connect(me.calc_Equipment)
-        # myUI.viewEquipment_Set1_INT.textChanged.connect(me.calc_Equipment)
-        # myUI.viewEquipment_Set1_INT_P.textChanged.connect(me.calc_Equipment)
-        # myUI.viewEquipment_Set1_LUK.textChanged.connect(me.calc_Equipment)
-        # myUI.viewEquipment_Set1_LUK_P.textChanged.connect(me.calc_Equipment)
         myUI.viewEquipment_Set1_ALL_P.textChanged.connect(me.calc_Equipment)
         myUI.viewEquipment_Set1_ATTACK.textChanged.connect(me.calc_Equipment)
         myUI.viewEquipment_Set1_ATTACK_P.textChanged.connect(me.calc_Equipment)
@@ -117,12 +71,6 @@ class AppWindow(QtWidgets.QDialog):
         myUI.viewEquipment_Set2_STR_P.textChanged.connect(me.calc_Equipment)
         myUI.viewEquipment_Set2_HP.textChanged.connect(me.calc_Equipment)
         myUI.viewEquipment_Set2_HP_P.textChanged.connect(me.calc_Equipment)
-        # myUI.viewEquipment_Set2_DEX.textChanged.connect(me.calc_Equipment)
-        # myUI.viewEquipment_Set2_DEX_P.textChanged.connect(me.calc_Equipment)
-        # myUI.viewEquipment_Set2_INT.textChanged.connect(me.calc_Equipment)
-        # myUI.viewEquipment_Set2_INT_P.textChanged.connect(me.calc_Equipment)
-        # myUI.viewEquipment_Set2_LUK.textChanged.connect(me.calc_Equipment)
-        # myUI.viewEquipment_Set2_LUK_P.textChanged.connect(me.calc_Equipment)
         myUI.viewEquipment_Set2_ALL_P.textChanged.connect(me.calc_Equipment)
         myUI.viewEquipment_Set2_ATTACK.textChanged.connect(me.calc_Equipment)
         myUI.viewEquipment_Set2_ATTACK_P.textChanged.connect(me.calc_Equipment)
@@ -158,8 +106,6 @@ class AppWindow(QtWidgets.QDialog):
                 # print(item)
 
                 if (item[0] == 'LEVEL'): myUI.viewAbility_LEVEL.setText(item[1])
-                if (item[0] == 'CLASS_IDX'): myUI.viewAbility_CLASS.setCurrentIndex(int(item[1]))
-                if (item[0] == 'WP_IDX'): myUI.viewAbility_WP.setCurrentIndex(int(item[1]))
                 if (item[0] == 'ATTACK'): myUI.viewAbility_ATTACK.setText(item[1])
                 if (item[0] == 'ATTACK_P'): myUI.viewAbility_ATTACK_P.setText(item[1])
                 if (item[0] == 'DMG_P'): myUI.viewAbility_DMG_P.setText(item[1])
@@ -176,41 +122,6 @@ class AppWindow(QtWidgets.QDialog):
                 if (item[0] == 'HP_CLEAR'): myUI.viewAbility_HP_CLEAR.setText(item[1])
                 if (item[0] == 'HP_P'): myUI.viewAbility_HP_P.setText(item[1])
                 if (item[0] == 'HP_UNIQUE'): myUI.viewAbility_HP_UNIQUE.setText(item[1])
-
-                # if (item[0] == 'DEX_CLEAR'): myUI.viewAbility_DEX_CLEAR.setText(item[1])
-                # if (item[0] == 'DEX_P'): myUI.viewAbility_DEX_P.setText(item[1])
-                # if (item[0] == 'DEX_UNIQUE'): myUI.viewAbility_DEX_UNIQUE.setText(item[1])
-
-                # if (item[0] == 'INT_CLEAR'): myUI.viewAbility_INT_CLEAR.setText(item[1])
-                # if (item[0] == 'INT_P'): myUI.viewAbility_INT_P.setText(item[1])
-                # if (item[0] == 'INT_UNIQUE'): myUI.viewAbility_INT_UNIQUE.setText(item[1])
-
-                # if (item[0] == 'LUK_CLEAR'): myUI.viewAbility_LUK_CLEAR.setText(item[1])
-                # if (item[0] == 'LUK_P'): myUI.viewAbility_LUK_P.setText(item[1])
-                # if (item[0] == 'LUK_UNIQUE'): myUI.viewAbility_LUK_UNIQUE.setText(item[1])
-
-                if (item[0] == 'SEED_ATTACK'): myUI.viewSeedRing_ATTACK.setText(item[1])
-                if (item[0] == 'SEED_ATTACK_P'): myUI.viewSeedRing_ATTACK_P.setText(item[1])
-                if (item[0] == 'SEED_DMG_P'): myUI.viewSeedRing_DMG_P.setText(item[1])
-                if (item[0] == 'SEED_STRIKE_P'): myUI.viewSeedRing_STRIKE_P.setText(item[1])
-                if (item[0] == 'SEED_IGNORE_P'): myUI.viewSeedRing_IGNORE_P.setText(item[1])
-
-                if (item[0] == 'SEED_STR'): myUI.viewSeedRing_STR.setText(item[1])
-                if (item[0] == 'SEED_STR_P'): myUI.viewSeedRing_STR_P.setText(item[1])
-
-                if (item[0] == 'SEED_DEX'): myUI.viewSeedRing_DEX.setText(item[1])
-                if (item[0] == 'SEED_DEX_P'): myUI.viewSeedRing_DEX_P.setText(item[1])
-
-                if (item[0] == 'SEED_INT'): myUI.viewSeedRing_INT.setText(item[1])
-                if (item[0] == 'SEED_INT_P'): myUI.viewSeedRing_INT_P.setText(item[1])
-
-                if (item[0] == 'SEED_LUK'): myUI.viewSeedRing_LUK.setText(item[1])
-                if (item[0] == 'SEED_LUK_P'): myUI.viewSeedRing_LUK_P.setText(item[1])
-
-                if (item[0] == 'SEED_ALL_P'): myUI.viewSeedRing_ALL_P.setText(item[1])
-
-                # if (item[0] == 'SEED_ALL_IN'): myUI.viewSeedRing_ALL_IN.setText(item[1])
-                if (item[0] == 'SEED_WEAPON_ATTACK'): myUI.viewSeedRing_WP_ATTACK.setText(item[1])
             
             data.close()
             me.doSubmit()
@@ -225,8 +136,6 @@ class AppWindow(QtWidgets.QDialog):
             myUI = me.myUI
             array = [
                 'LEVEL=' + str(myUI.viewAbility_LEVEL.text()) + '\n',
-                'CLASS_IDX=' + str(myUI.viewAbility_CLASS.currentIndex()) + '\n',
-                'WP_IDX=' + str(myUI.viewAbility_WP.currentIndex()) + '\n',
                 'ATTACK=' + str(myUI.viewAbility_ATTACK.text()) + '\n',
                 'ATTACK_P=' + str(myUI.viewAbility_ATTACK_P.text()) + '\n',
                 'DMG_P=' + str(myUI.viewAbility_DMG_P.text()) + '\n',
