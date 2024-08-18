@@ -14,12 +14,9 @@ class Calculator_UI():
         me.tabpanel.setGeometry(QtCore.QRect(padding, padding, form_w-padding*2, form_h-padding*2))
 
         me.tabpanel.addTab(me.desingPage_Ability(), '能力值設定')
-        # me.tabpanel.addTab(me.desingPage_Link(), '傳授')
         me.tabpanel.addTab(me.desingPage_Parameter(), '角色參數')
-        # me.tabpanel.addTab(me.desingPage_SeedRing(), '塔戒')
         me.tabpanel.addTab(me.desingPage_Equipment(), '裝備變更')
         me.tabpanel.addTab(me.desingPage_Tools(), '工具')
-        # me.tabpanel.addTab(me.desingPage_Memo(), '使用說明')
         
         me.tabpanel.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(Form)
@@ -40,14 +37,14 @@ class Calculator_UI():
         me.viewAbility_LEVEL = me.makeField(page, QtWidgets.QLineEdit(page), 15, 60, 270, 24, '等級', 90)
         # me.viewAbility_LEVEL.textChanged.connect(me.updateMapleValue)
         
-        me.viewAbility_CLASS_IDX  = me.makeField(page, QtWidgets.QComboBox(page), 300, 60, 270, 24, '職業', 90)
+        me.viewAbility_CLASS  = me.makeField(page, QtWidgets.QLineEdit(page), 300, 60, 270, 24, '職業', 90).setEnabled(False)
 
         me.viewAbility_ATTACK = me.makeField(page, QtWidgets.QLineEdit(page), 15, 90, 270, 24, '基礎攻擊', 90)
         me.viewAbility_DMG_P      = me.makeField(page, QtWidgets.QLineEdit(page), 15, 120, 270, 24, '傷害', 90, '％')
         me.viewAbility_FINALDMG_P = me.makeField(page, QtWidgets.QLineEdit(page), 15, 150, 270, 24, '最終傷害', 90, '％')
         me.viewAbility_BOSS_P     = me.makeField(page, QtWidgets.QLineEdit(page), 15, 180, 270, 24, 'BOSS傷害', 90, '％')
 
-        me.viewAbility_WP_IDX   = me.makeField(page, QtWidgets.QComboBox(page), 300, 90 , 270, 24, '武器係數', 90)
+        me.viewAbility_WP   = me.makeField(page, QtWidgets.QLineEdit(page), 300, 90 , 270, 24, '武器係數', 90).setEnabled(False)
         me.viewAbility_STRIKE_P = me.makeField(page, QtWidgets.QLineEdit(page), 300, 120, 270, 24, '爆擊傷害', 90, '％')
         me.viewAbility_ATTACK_P = me.makeField(page, QtWidgets.QLineEdit(page), 300, 150, 270, 24, '攻擊力％', 90, '％')
         me.viewAbility_IGNORE_P = me.makeField(page, QtWidgets.QLineEdit(page), 300, 180, 270, 24, '無視防禦', 90, '％')
@@ -79,23 +76,6 @@ class Calculator_UI():
         # me.viewAbility_MAPLE_16 = me.makeField(page, QtWidgets.QLabel(page), 435, 370, 135, 24)
         # me.viewAbility_MAPLE_16.setText('楓祝16% = 0')
 
-        return page
-
-    # def updateMapleValue(me):
-    #     if me.viewAbility_LEVEL.text():
-    #         LEVEL = int(me.viewAbility_LEVEL.text())
-    #     else:
-    #         LEVEL = 0
-    #     AP = (LEVEL * 5) + 18
-    #     MAPLE_15 = int(AP * 0.15)
-    #     MAPLE_16 = int(AP * 0.16)
-    #     me.viewAbility_MAPLE_15.setText('楓祝15% = ' + str(MAPLE_15))
-    #     me.viewAbility_MAPLE_16.setText('楓祝16% = ' + str(MAPLE_16))
-
-    # function: 傳授
-    def desingPage_Link(me):
-        page = QtWidgets.QWidget()
-        
         return page
     
     # function: 角色參數
@@ -305,155 +285,6 @@ class Calculator_UI():
         me.viewParameter_ESTIMATE_IGNORE_P = me.makeField(page, QtWidgets.QLabel(page), 462, 153 + 18 *13, 108, 18, '無視%', 40, '%', 19)
         
         return page
-
-    # function: 塔戒
-    # def desingPage_SeedRing(me):
-    #     page = QtWidgets.QWidget()
-
-    #     me.makeField(page, QtWidgets.QLabel(page),  15, 10, 130, 24).setText('原戒指能力')
-    #     me.makeField(page, QtWidgets.QLabel(page), 160, 10, 130, 24).setText('塔戒種類')
-    #     me.makeField(page, QtWidgets.QLabel(page), 280, 10, 130, 24).setText('LV1')
-    #     me.makeField(page, QtWidgets.QLabel(page), 350, 10, 130, 24).setText('LV2')
-    #     me.makeField(page, QtWidgets.QLabel(page), 420, 10, 130, 24).setText('LV3')
-    #     me.makeField(page, QtWidgets.QLabel(page), 490, 10, 130, 24).setText('LV4')
-
-    #     me.viewSeedRing_STR       = me.makeField(page, QtWidgets.QLineEdit(page), 15, 10 + 25 *  1, 130, 24, 'STR' , 55, '')
-    #     me.viewSeedRing_STR_P     = me.makeField(page, QtWidgets.QLineEdit(page), 15, 10 + 25 *  2, 130, 24, 'STR%', 55, '％')
-    #     me.viewSeedRing_DEX       = me.makeField(page, QtWidgets.QLineEdit(page), 15, 10 + 25 *  3, 130, 24, 'DEX' , 55, '')
-    #     me.viewSeedRing_DEX_P     = me.makeField(page, QtWidgets.QLineEdit(page), 15, 10 + 25 *  4, 130, 24, 'DEX%', 55, '％')
-    #     me.viewSeedRing_INT       = me.makeField(page, QtWidgets.QLineEdit(page), 15, 10 + 25 *  5, 130, 24, 'INT' , 55, '')
-    #     me.viewSeedRing_INT_P     = me.makeField(page, QtWidgets.QLineEdit(page), 15, 10 + 25 *  6, 130, 24, 'INT%', 55, '％')
-    #     me.viewSeedRing_LUK       = me.makeField(page, QtWidgets.QLineEdit(page), 15, 10 + 25 *  7, 130, 24, 'LUK' , 55, '')
-    #     me.viewSeedRing_LUK_P     = me.makeField(page, QtWidgets.QLineEdit(page), 15, 10 + 25 *  8, 130, 24, 'LUK%', 55, '％')
-    #     me.viewSeedRing_ALL_P     = me.makeField(page, QtWidgets.QLineEdit(page), 15, 10 + 25 *  9, 130, 24, '全屬%', 55, '％')
-    #     me.viewSeedRing_ATTACK    = me.makeField(page, QtWidgets.QLineEdit(page), 15, 10 + 25 * 10, 130, 24, '攻擊' , 55, '')
-    #     me.viewSeedRing_ATTACK_P  = me.makeField(page, QtWidgets.QLineEdit(page), 15, 10 + 25 * 11, 130, 24, '攻擊%', 55, '％')
-    #     me.viewSeedRing_DMG_P     = me.makeField(page, QtWidgets.QLineEdit(page), 15, 10 + 25 * 12, 130, 24, '傷害%', 55, '％')
-    #     me.viewSeedRing_STRIKE_P  = me.makeField(page, QtWidgets.QLineEdit(page), 15, 10 + 25 * 13, 130, 24, '爆傷%', 55, '％')
-    #     me.viewSeedRing_IGNORE_P  = me.makeField(page, QtWidgets.QLineEdit(page), 15, 10 + 25 * 14, 130, 24, '無視%', 55, '％')
-    #     me.viewSeedRing_WP_ATTACK = me.makeField(page, QtWidgets.QLineEdit(page), 15, 10 + 25 * 15, 130, 24, '武器攻')
-    #     # me.viewSeedRing_ALL_IN    = me.makeField(page, QtWidgets.QLineEdit(page), 15, 10 + 25 * 16, 130, 24, '爆發倍率')
-    #     # me.viewSeedRing_ALL_IN.setText('1')
-    #     me.makeField(page, QtWidgets.QLabel(page), 160, 10 + 25 * 15, 500, 24).setText('←請填寫武器攻擊力')
-    #     # me.makeField(page, QtWidgets.QLabel(page), 160,  3 + 25 * 16, 500, 24).setText('←爆發時相對於平砍時的倍率，預設會吃滿塔戒時間')
-    #     # me.makeField(page, QtWidgets.QLabel(page), 160, 17 + 25 * 16, 500, 24).setText('　有武公的情況「規範戒指」與「冒險家戒指」會失真')
-
-    #     me.makeField(page, QtWidgets.QLineEdit(page), 155, 10 + 28 * 1, 405, 24).setEnabled(False)
-    #     me.makeField(page, QtWidgets.QLineEdit(page), 155, 10 + 28 * 2, 405, 24).setEnabled(False)
-    #     me.makeField(page, QtWidgets.QLineEdit(page), 155, 10 + 28 * 3, 405, 24).setEnabled(False)
-    #     me.makeField(page, QtWidgets.QLineEdit(page), 155, 10 + 28 * 4, 405, 24).setEnabled(False)
-    #     me.makeField(page, QtWidgets.QLineEdit(page), 155, 10 + 28 * 5, 405, 24).setEnabled(False)
-    #     me.makeField(page, QtWidgets.QLineEdit(page), 155, 10 + 28 * 6, 405, 24).setEnabled(False)
-    #     me.makeField(page, QtWidgets.QLineEdit(page), 155, 10 + 28 * 7, 405, 24).setEnabled(False)
-    #     me.makeField(page, QtWidgets.QLineEdit(page), 155, 10 + 28 * 8, 405, 24).setEnabled(False)
-        
-    #     me.makeField(page, QtWidgets.QLabel(page), 160, 10 + 28 * 1, 130, 24).setText('武器泡泡 - Ｓ')
-    #     me.makeField(page, QtWidgets.QLabel(page), 160, 10 + 28 * 2, 130, 24).setText('武器泡泡 - Ｄ')
-    #     me.makeField(page, QtWidgets.QLabel(page), 160, 10 + 28 * 3, 130, 24).setText('武器泡泡 - Ｉ')
-    #     me.makeField(page, QtWidgets.QLabel(page), 160, 10 + 28 * 4, 130, 24).setText('武器泡泡 - Ｌ')
-    #     me.makeField(page, QtWidgets.QLabel(page), 160, 10 + 28 * 5, 130, 24).setText('拇指環')
-    #     me.makeField(page, QtWidgets.QLabel(page), 160, 10 + 28 * 6, 130, 24).setText('冒險家戒指')
-    #     me.makeField(page, QtWidgets.QLabel(page), 160, 10 + 28 * 7, 130, 24).setText('規範戒指')
-    #     me.makeField(page, QtWidgets.QLabel(page), 160, 10 + 28 * 8, 130, 24).setText('爆擊傷害戒指')
-    #     me.makeField(page, QtWidgets.QLabel(page), 160, 10 + 28 * 9, 130, 24).setText('時間常數')
-    #     me.makeField(page, QtWidgets.QLabel(page), 160, 10 + 28 *10, 999, 24).setText('※ 時間常數為計算持續時間總效益，不考慮時間選1')
-    #     me.makeField(page, QtWidgets.QLabel(page), 160, 10 + 28 *11, 999, 24).setText('※ 時間常數套用上限為各戒指最高持續時間')
-        
-
-    #     me.viewSeedRing_TIME_VALUE_TXT = me.makeField(page, QtWidgets.QLabel(page), 250, 10 + 28 * 9, 130, 24)
-    #     me.viewSeedRing_TIME_VALUE_TXT.setText('1 秒')
-        
-    #     me.viewSeedRing_TIME_VALUE = me.makeField(page, QtWidgets.QSlider(page), 280, 10 + 28 * 9, 270, 24)
-    #     me.viewSeedRing_TIME_VALUE.setOrientation(QtCore.Qt.Horizontal)
-    #     me.viewSeedRing_TIME_VALUE.setMinimum(1)
-    #     me.viewSeedRing_TIME_VALUE.setMaximum(30)
-    #     me.viewSeedRing_TIME_VALUE.setValue(1)
-        
-    #     me.viewSeedRing_WEAPON_STR_LV1 = me.makeField(page, QtWidgets.QLabel(page), 280, 10 + 28 * 1, 130, 24)
-    #     me.viewSeedRing_WEAPON_STR_LV2 = me.makeField(page, QtWidgets.QLabel(page), 350, 10 + 28 * 1, 130, 24)
-    #     me.viewSeedRing_WEAPON_STR_LV3 = me.makeField(page, QtWidgets.QLabel(page), 420, 10 + 28 * 1, 130, 24)
-    #     me.viewSeedRing_WEAPON_STR_LV4 = me.makeField(page, QtWidgets.QLabel(page), 490, 10 + 28 * 1, 130, 24)
-
-    #     me.viewSeedRing_WEAPON_DEX_LV1 = me.makeField(page, QtWidgets.QLabel(page), 280, 10 + 28 * 2, 130, 24)
-    #     me.viewSeedRing_WEAPON_DEX_LV2 = me.makeField(page, QtWidgets.QLabel(page), 350, 10 + 28 * 2, 130, 24)
-    #     me.viewSeedRing_WEAPON_DEX_LV3 = me.makeField(page, QtWidgets.QLabel(page), 420, 10 + 28 * 2, 130, 24)
-    #     me.viewSeedRing_WEAPON_DEX_LV4 = me.makeField(page, QtWidgets.QLabel(page), 490, 10 + 28 * 2, 130, 24)
-
-    #     me.viewSeedRing_WEAPON_INT_LV1 = me.makeField(page, QtWidgets.QLabel(page), 280, 10 + 28 * 3, 130, 24)
-    #     me.viewSeedRing_WEAPON_INT_LV2 = me.makeField(page, QtWidgets.QLabel(page), 350, 10 + 28 * 3, 130, 24)
-    #     me.viewSeedRing_WEAPON_INT_LV3 = me.makeField(page, QtWidgets.QLabel(page), 420, 10 + 28 * 3, 130, 24)
-    #     me.viewSeedRing_WEAPON_INT_LV4 = me.makeField(page, QtWidgets.QLabel(page), 490, 10 + 28 * 3, 130, 24)
-
-    #     me.viewSeedRing_WEAPON_LUK_LV1 = me.makeField(page, QtWidgets.QLabel(page), 280, 10 + 28 * 4, 130, 24)
-    #     me.viewSeedRing_WEAPON_LUK_LV2 = me.makeField(page, QtWidgets.QLabel(page), 350, 10 + 28 * 4, 130, 24)
-    #     me.viewSeedRing_WEAPON_LUK_LV3 = me.makeField(page, QtWidgets.QLabel(page), 420, 10 + 28 * 4, 130, 24)
-    #     me.viewSeedRing_WEAPON_LUK_LV4 = me.makeField(page, QtWidgets.QLabel(page), 490, 10 + 28 * 4, 130, 24)
-
-    #     me.viewSeedRing_TOTALLING_LV1 = me.makeField(page, QtWidgets.QLabel(page), 280, 10 + 28 * 5, 130, 24)
-    #     me.viewSeedRing_TOTALLING_LV2 = me.makeField(page, QtWidgets.QLabel(page), 350, 10 + 28 * 5, 130, 24)
-    #     me.viewSeedRing_TOTALLING_LV3 = me.makeField(page, QtWidgets.QLabel(page), 420, 10 + 28 * 5, 130, 24)
-    #     me.viewSeedRing_TOTALLING_LV4 = me.makeField(page, QtWidgets.QLabel(page), 490, 10 + 28 * 5, 130, 24)
-
-    #     me.viewSeedRing_RISTTAKER_LV1 = me.makeField(page, QtWidgets.QLabel(page), 280, 10 + 28 * 6, 130, 24)
-    #     me.viewSeedRing_RISTTAKER_LV2 = me.makeField(page, QtWidgets.QLabel(page), 350, 10 + 28 * 6, 130, 24)
-    #     me.viewSeedRing_RISTTAKER_LV3 = me.makeField(page, QtWidgets.QLabel(page), 420, 10 + 28 * 6, 130, 24)
-    #     me.viewSeedRing_RISTTAKER_LV4 = me.makeField(page, QtWidgets.QLabel(page), 490, 10 + 28 * 6, 130, 24)
-
-    #     me.viewSeedRing_RESTRAINT_LV1 = me.makeField(page, QtWidgets.QLabel(page), 280, 10 + 28 * 7, 130, 24)
-    #     me.viewSeedRing_RESTRAINT_LV2 = me.makeField(page, QtWidgets.QLabel(page), 350, 10 + 28 * 7, 130, 24)
-    #     me.viewSeedRing_RESTRAINT_LV3 = me.makeField(page, QtWidgets.QLabel(page), 420, 10 + 28 * 7, 130, 24)
-    #     me.viewSeedRing_RESTRAINT_LV4 = me.makeField(page, QtWidgets.QLabel(page), 490, 10 + 28 * 7, 130, 24)
-
-    #     me.viewSeedRing_STRIKE_LV1 = me.makeField(page, QtWidgets.QLabel(page), 280, 10 + 28 * 8, 130, 24)
-    #     me.viewSeedRing_STRIKE_LV2 = me.makeField(page, QtWidgets.QLabel(page), 350, 10 + 28 * 8, 130, 24)
-    #     me.viewSeedRing_STRIKE_LV3 = me.makeField(page, QtWidgets.QLabel(page), 420, 10 + 28 * 8, 130, 24)
-    #     me.viewSeedRing_STRIKE_LV4 = me.makeField(page, QtWidgets.QLabel(page), 490, 10 + 28 * 8, 130, 24)
-
-    #     me.viewSeedRing_WEAPON_STR_LV1.setText('0.0%')
-    #     me.viewSeedRing_WEAPON_STR_LV2.setText('0.0%')
-    #     me.viewSeedRing_WEAPON_STR_LV3.setText('0.0%')
-    #     me.viewSeedRing_WEAPON_STR_LV4.setText('0.0%')
-
-    #     me.viewSeedRing_WEAPON_DEX_LV1.setText('0.0%')
-    #     me.viewSeedRing_WEAPON_DEX_LV2.setText('0.0%')
-    #     me.viewSeedRing_WEAPON_DEX_LV3.setText('0.0%')
-    #     me.viewSeedRing_WEAPON_DEX_LV4.setText('0.0%')
-
-    #     me.viewSeedRing_WEAPON_INT_LV1.setText('0.0%')
-    #     me.viewSeedRing_WEAPON_INT_LV2.setText('0.0%')
-    #     me.viewSeedRing_WEAPON_INT_LV3.setText('0.0%')
-    #     me.viewSeedRing_WEAPON_INT_LV4.setText('0.0%')
-
-    #     me.viewSeedRing_WEAPON_LUK_LV1.setText('0.0%')
-    #     me.viewSeedRing_WEAPON_LUK_LV2.setText('0.0%')
-    #     me.viewSeedRing_WEAPON_LUK_LV3.setText('0.0%')
-    #     me.viewSeedRing_WEAPON_LUK_LV4.setText('0.0%')
-
-    #     me.viewSeedRing_TOTALLING_LV1.setText('0.0%')
-    #     me.viewSeedRing_TOTALLING_LV2.setText('0.0%')
-    #     me.viewSeedRing_TOTALLING_LV3.setText('0.0%')
-    #     me.viewSeedRing_TOTALLING_LV4.setText('0.0%')
-
-    #     me.viewSeedRing_RISTTAKER_LV1.setText('0.0%')
-    #     me.viewSeedRing_RISTTAKER_LV2.setText('0.0%')
-    #     me.viewSeedRing_RISTTAKER_LV3.setText('0.0%')
-    #     me.viewSeedRing_RISTTAKER_LV4.setText('0.0%')
-
-    #     me.viewSeedRing_RESTRAINT_LV1.setText('0.0%')
-    #     me.viewSeedRing_RESTRAINT_LV2.setText('0.0%')
-    #     me.viewSeedRing_RESTRAINT_LV3.setText('0.0%')
-    #     me.viewSeedRing_RESTRAINT_LV4.setText('0.0%')
-
-    #     me.viewSeedRing_STRIKE_LV1.setText('0.0%')
-    #     me.viewSeedRing_STRIKE_LV2.setText('0.0%')
-    #     me.viewSeedRing_STRIKE_LV3.setText('0.0%')
-    #     me.viewSeedRing_STRIKE_LV4.setText('0.0%')
-        
-    #     return page
-
-    # event: 顯示時間常數
-    def printTIME_VALUE(me):
-        print(me.viewSeedRing_TIME_VALUE.value())
     
     # function: 裝備變更
     def desingPage_Equipment(me):

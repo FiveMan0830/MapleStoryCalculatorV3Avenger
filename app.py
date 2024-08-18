@@ -13,20 +13,19 @@ class AppWindow(QtWidgets.QDialog):
         me.myUI.setupUi(me)
 
         me.loadUIConfig()
-        me.myUI.viewAbility_WP_IDX.setCurrentText("1.3")
         me.show()
 
     # function: UI事件綁定
     def loadUIConfig(me):
-        myCharactor = Character()
+        myCharacter = Character()
         myUI = me.myUI
 
         # 載入職業資訊
-        myUI.viewAbility_CLASS_IDX.addItems(myCharactor.getClasslist())
-        myUI.viewAbility_WP_IDX.addItems(myCharactor.getWPlist())
+        # myUI.viewAbility_CLASS.addItems(myCharactor.getClassList())
+        # myUI.viewAbility_WP.addItems(myCharactor.getWPlist())
 
         # page: 能力值設定
-        myUI.viewAbility_CLASS_IDX.activated.connect(me.updateClassInfo)
+        # myUI.viewAbility_CLASS.activated.connect(me.updateClassInfo)
         
         myUI.btnAbility_SelectFile.clicked.connect(me.doSelectFile)
         myUI.btnAbility_SaveFile.clicked.connect(me.doSaveFile)
@@ -134,17 +133,16 @@ class AppWindow(QtWidgets.QDialog):
         # page: 工具
         myUI.btnTools_IGNORE_SUBMIT.clicked.connect(me.doCalcIgnore)
         
-        me.myCharactor = myCharactor
+        me.myCharacter = myCharacter
         pass
     
     # event: 更新職業對應資訊
     def updateClassInfo(me):
-        myCharactor = me.myCharactor
+        myCharacter = me.myCharacter
         myUI = me.myUI
 
-        CLASS_NAME = myUI.viewAbility_CLASS_IDX.currentText()
-        CLASS_INFO = myCharactor.getClassInfo(CLASS_NAME)
-        myUI.viewAbility_WP_IDX.setCurrentIndex(CLASS_INFO['WP_IDX'])
+        CLASS_INFO = myCharacter.getInfo()
+        myUI.viewAbility_WP.setCurrentIndex(CLASS_INFO['WP_IDX'])
         # print(CLASS_INFO)
         pass
 
@@ -160,8 +158,8 @@ class AppWindow(QtWidgets.QDialog):
                 # print(item)
 
                 if (item[0] == 'LEVEL'): myUI.viewAbility_LEVEL.setText(item[1])
-                if (item[0] == 'CLASS_IDX'): myUI.viewAbility_CLASS_IDX.setCurrentIndex(int(item[1]))
-                if (item[0] == 'WP_IDX'): myUI.viewAbility_WP_IDX.setCurrentIndex(int(item[1]))
+                if (item[0] == 'CLASS_IDX'): myUI.viewAbility_CLASS.setCurrentIndex(int(item[1]))
+                if (item[0] == 'WP_IDX'): myUI.viewAbility_WP.setCurrentIndex(int(item[1]))
                 if (item[0] == 'ATTACK'): myUI.viewAbility_ATTACK.setText(item[1])
                 if (item[0] == 'ATTACK_P'): myUI.viewAbility_ATTACK_P.setText(item[1])
                 if (item[0] == 'DMG_P'): myUI.viewAbility_DMG_P.setText(item[1])
@@ -227,8 +225,8 @@ class AppWindow(QtWidgets.QDialog):
             myUI = me.myUI
             array = [
                 'LEVEL=' + str(myUI.viewAbility_LEVEL.text()) + '\n',
-                'CLASS_IDX=' + str(myUI.viewAbility_CLASS_IDX.currentIndex()) + '\n',
-                'WP_IDX=' + str(myUI.viewAbility_WP_IDX.currentIndex()) + '\n',
+                'CLASS_IDX=' + str(myUI.viewAbility_CLASS.currentIndex()) + '\n',
+                'WP_IDX=' + str(myUI.viewAbility_WP.currentIndex()) + '\n',
                 'ATTACK=' + str(myUI.viewAbility_ATTACK.text()) + '\n',
                 'ATTACK_P=' + str(myUI.viewAbility_ATTACK_P.text()) + '\n',
                 'DMG_P=' + str(myUI.viewAbility_DMG_P.text()) + '\n',
@@ -290,14 +288,12 @@ class AppWindow(QtWidgets.QDialog):
     # event: 送出資料
     def doSubmit(me):
         try:
-            myCharactor = me.myCharactor
+            myCharacter = me.myCharacter
             myUI = me.myUI
-            myCharactor.reset()
+            myCharacter.reset()
 
             data = {
                 'LEVEL': myUI.textToInt(myUI.viewAbility_LEVEL.text()),
-                'CLASS_IDX': myUI.textToInt(myUI.viewAbility_CLASS_IDX.currentIndex()),
-                'WP_IDX': myUI.textToInt(myUI.viewAbility_WP_IDX.currentIndex()),
                 'ATTACK': myUI.textToInt(myUI.viewAbility_ATTACK.text()),
                 'ATTACK_P': myUI.textToFloat(myUI.viewAbility_ATTACK_P.text()) / 100,
                 'DMG_P': myUI.textToFloat(myUI.viewAbility_DMG_P.text()) / 100,
@@ -314,34 +310,26 @@ class AppWindow(QtWidgets.QDialog):
                 'HP_CLEAR': myUI.textToInt(myUI.viewAbility_HP_CLEAR.text()),
                 'HP_P': myUI.textToInt(myUI.viewAbility_HP_P.text())/100,
                 'HP_UNIQUE': myUI.textToInt(myUI.viewAbility_HP_UNIQUE.text()),
-
-                # 'DEX_CLEAR': myUI.textToInt(myUI.viewAbility_DEX_CLEAR.text()),
-                # 'DEX_P': myUI.textToInt(myUI.viewAbility_DEX_P.text())/100,
-                # 'DEX_UNIQUE': myUI.textToInt(myUI.viewAbility_DEX_UNIQUE.text()),
-
-                # 'INT_CLEAR': myUI.textToInt(myUI.viewAbility_INT_CLEAR.text()),
-                # 'INT_P': myUI.textToInt(myUI.viewAbility_INT_P.text())/100,
-                # 'INT_UNIQUE': myUI.textToInt(myUI.viewAbility_INT_UNIQUE.text()),
-
-                # 'LUK_CLEAR': myUI.textToInt(myUI.viewAbility_LUK_CLEAR.text()),
-                # 'LUK_P': myUI.textToInt(myUI.viewAbility_LUK_P.text())/100,
-                # 'LUK_UNIQUE': myUI.textToInt(myUI.viewAbility_LUK_UNIQUE.text()),
             }
 
-            myCharactor.updateAbilityByData(data)
+            myCharacter.updateAbilityByData(data)
+            print('me.calc_Equivalent()')
             me.calc_Equivalent()
+            print('me.calc_Improve()')
             me.calc_Improve()
-            # me.calc_SeedRing()
+            print('me.calc_Equipment()')
             me.calc_Equipment()
             QtWidgets.QMessageBox.information(me, '提示', '計算完成')
-        except Exception:
+        except Exception as e:
             QtWidgets.QMessageBox.warning(me, '提示', '輸入資料有誤')
+            print('doSubmit')
+            print(e)
             pass
 
     # event: 計算等效數值
     def calc_Equivalent(me):
         try:
-            myCharactor = me.myCharactor
+            myCharactor = me.myCharacter
             myUI = me.myUI
             
             if (myCharactor.isReset): return False
@@ -371,9 +359,6 @@ class AppWindow(QtWidgets.QDialog):
 
             if(RANGE_TYPE == '％全屬'): 
                 new_data['STR_P'] = RANGE_VALUE / 100
-                # new_data['DEX_P'] = RANGE_VALUE / 100
-                # new_data['INT_P'] = RANGE_VALUE / 100
-                # new_data['LUK_P'] = RANGE_VALUE / 100
                 
             if(RANGE_TYPE == '力量'): 
                 new_data['STR_CLEAR'] = RANGE_VALUE
@@ -393,34 +378,8 @@ class AppWindow(QtWidgets.QDialog):
             if(RANGE_TYPE == '不吃％HP'): 
                 new_data['HP_UNIQUE'] = RANGE_VALUE
 
-            # if(RANGE_TYPE == '敏捷'): 
-            #     new_data['DEX_CLEAR'] = RANGE_VALUE
-                
-            # if(RANGE_TYPE == '％敏捷'): 
-            #     new_data['DEX_P'] = RANGE_VALUE / 100
-            
-            # if(RANGE_TYPE == '不吃％敏'): 
-            #     new_data['DEX_UNIQUE'] = RANGE_VALUE
-                
-            # if(RANGE_TYPE == '智力'): 
-            #     new_data['INT_CLEAR'] = RANGE_VALUE
-                
-            # if(RANGE_TYPE == '％智力'): 
-            #     new_data['INT_P'] = RANGE_VALUE / 100
-                
-            # if(RANGE_TYPE == '不吃％智'): 
-            #     new_data['INT_UNIQUE'] = RANGE_VALUE
-                
-            # if(RANGE_TYPE == '幸運'): 
-            #     new_data['LUK_CLEAR'] = RANGE_VALUE
-                
-            # if(RANGE_TYPE == '％幸運'): 
-            #     new_data['LUK_P'] = RANGE_VALUE / 100
-                
-            # if(RANGE_TYPE == '不吃％幸'): 
-            #     new_data['LUK_UNIQUE'] = RANGE_VALUE
-
             IMPROVE_INFO = myCharactor.calcImprove(new_data)
+
             STATE_INFO = myCharactor.getEquivalent(IMPROVE_INFO['TOTAL'])
 
             def toRoundStr(value): 
@@ -441,26 +400,17 @@ class AppWindow(QtWidgets.QDialog):
             myUI.viewParameter_EQUIVALENT_HP_CLEAR.setText(toRoundStr(STATE_INFO['HP_CLEAR']))
             myUI.viewParameter_EQUIVALENT_HP_P.setText(toRoundStr(STATE_INFO['HP_P']*100))
             myUI.viewParameter_EQUIVALENT_HP_UNIQUE.setText(toRoundStr(STATE_INFO['HP_UNIQUE']))
-            
-            # myUI.viewParameter_EQUIVALENT_DEX_CLEAR.setText(toRoundStr(STATE_INFO['DEX_CLEAR']))
-            # myUI.viewParameter_EQUIVALENT_DEX_P.setText(toRoundStr(STATE_INFO['DEX_P']*100))
-            # myUI.viewParameter_EQUIVALENT_DEX_UNIQUE.setText(toRoundStr(STATE_INFO['DEX_UNIQUE']))
-            
-            # myUI.viewParameter_EQUIVALENT_INT_CLEAR.setText(toRoundStr(STATE_INFO['INT_CLEAR']))
-            # myUI.viewParameter_EQUIVALENT_INT_P.setText(toRoundStr(STATE_INFO['INT_P']*100))
-            # myUI.viewParameter_EQUIVALENT_INT_UNIQUE.setText(toRoundStr(STATE_INFO['INT_UNIQUE']))
-            
-            # myUI.viewParameter_EQUIVALENT_LUK_CLEAR.setText(toRoundStr(STATE_INFO['LUK_CLEAR']))
-            # myUI.viewParameter_EQUIVALENT_LUK_P.setText(toRoundStr(STATE_INFO['LUK_P']*100))
-            # myUI.viewParameter_EQUIVALENT_LUK_UNIQUE.setText(toRoundStr(STATE_INFO['LUK_UNIQUE']))
-        except Exception:
+
+        except Exception as e:
             QtWidgets.QMessageBox.warning(me, '提示', '輸入資料有誤')
+            print('calc_equi')
+            print(e)
             pass
 
     # event: 計算增幅
     def calc_Improve(me):
         try:
-            myCharactor = me.myCharactor
+            myCharactor = me.myCharacter
             myUI = me.myUI
 
             if (myCharactor.isReset): return False
@@ -480,18 +430,6 @@ class AppWindow(QtWidgets.QDialog):
                 'HP_P': myUI.textToFloat(myUI.viewParameter_IMPROVE_VALUE_HP_P.text()) / 100,
                 'HP_UNIQUE': myUI.textToFloat(myUI.viewParameter_IMPROVE_VALUE_HP_UNIQUE.text()),
 
-                # 'DEX_CLEAR': myUI.textToFloat(myUI.viewParameter_IMPROVE_VALUE_DEX_CLEAR.text()),
-                # 'DEX_P': myUI.textToFloat(myUI.viewParameter_IMPROVE_VALUE_DEX_P.text()) / 100,
-                # 'DEX_UNIQUE': myUI.textToFloat(myUI.viewParameter_IMPROVE_VALUE_DEX_UNIQUE.text()),
-
-                # 'INT_CLEAR': myUI.textToFloat(myUI.viewParameter_IMPROVE_VALUE_INT_CLEAR.text()),
-                # 'INT_P': myUI.textToFloat(myUI.viewParameter_IMPROVE_VALUE_INT_P.text()) / 100,
-                # 'INT_UNIQUE': myUI.textToFloat(myUI.viewParameter_IMPROVE_VALUE_INT_UNIQUE.text()),
-
-                # 'LUK_CLEAR': myUI.textToFloat(myUI.viewParameter_IMPROVE_VALUE_LUK_CLEAR.text()),
-                # 'LUK_P': myUI.textToFloat(myUI.viewParameter_IMPROVE_VALUE_LUK_P.text()) / 100,
-                # 'LUK_UNIQUE': myUI.textToFloat(myUI.viewParameter_IMPROVE_VALUE_LUK_UNIQUE.text()),
-
                 'ALL_P': myUI.textToFloat(myUI.viewParameter_IMPROVE_VALUE_ALL_P.text()) / 100,
             }
 
@@ -509,18 +447,6 @@ class AppWindow(QtWidgets.QDialog):
             myUI.viewParameter_IMPROVE_HP_CLEAR.setText(IMPROVE_TEXT + toPercentText(IMPROVE_INFO['HP_CLEAR']))
             myUI.viewParameter_IMPROVE_HP_P.setText(IMPROVE_TEXT + toPercentText(IMPROVE_INFO['HP_P']))
             myUI.viewParameter_IMPROVE_HP_UNIQUE.setText(IMPROVE_TEXT + toPercentText(IMPROVE_INFO['HP_UNIQUE']))
-
-            # myUI.viewParameter_IMPROVE_DEX_CLEAR.setText(IMPROVE_TEXT + toPercentText(IMPROVE_INFO['DEX_CLEAR']))
-            # myUI.viewParameter_IMPROVE_DEX_P.setText(IMPROVE_TEXT + toPercentText(IMPROVE_INFO['DEX_P']))
-            # myUI.viewParameter_IMPROVE_DEX_UNIQUE.setText(IMPROVE_TEXT + toPercentText(IMPROVE_INFO['DEX_UNIQUE']))
-
-            # myUI.viewParameter_IMPROVE_INT_CLEAR.setText(IMPROVE_TEXT + toPercentText(IMPROVE_INFO['INT_CLEAR']))
-            # myUI.viewParameter_IMPROVE_INT_P.setText(IMPROVE_TEXT + toPercentText(IMPROVE_INFO['INT_P']))
-            # myUI.viewParameter_IMPROVE_INT_UNIQUE.setText(IMPROVE_TEXT + toPercentText(IMPROVE_INFO['INT_UNIQUE']))
-
-            # myUI.viewParameter_IMPROVE_LUK_CLEAR.setText(IMPROVE_TEXT + toPercentText(IMPROVE_INFO['LUK_CLEAR']))
-            # myUI.viewParameter_IMPROVE_LUK_P.setText(IMPROVE_TEXT + toPercentText(IMPROVE_INFO['LUK_P']))
-            # myUI.viewParameter_IMPROVE_LUK_UNIQUE.setText(IMPROVE_TEXT + toPercentText(IMPROVE_INFO['LUK_UNIQUE']))
 
             myUI.viewParameter_IMPROVE_ALL_P.setText(IMPROVE_TEXT + toPercentText(IMPROVE_INFO['ALL_P']))
 
@@ -540,7 +466,6 @@ class AppWindow(QtWidgets.QDialog):
                 return str(math.floor(value))
 
             PREFIX_TXT = '等同於 增加 '
-            # print(STATE_INFO)
             
             if(RANGE_TYPE == '攻擊'):
                 myUI.viewParameter_IMPROVE_VALUE_AS.setText(PREFIX_TXT + str(round(STATE_INFO['ATTACK'],3)))
@@ -580,33 +505,6 @@ class AppWindow(QtWidgets.QDialog):
             
             if(RANGE_TYPE == '不吃％HP'): 
                 myUI.viewParameter_IMPROVE_VALUE_AS.setText(PREFIX_TXT + str(round(STATE_INFO['HP_UNIQUE'],3)))
-            
-            # if(RANGE_TYPE == '敏捷'): 
-            #     myUI.viewParameter_IMPROVE_VALUE_AS.setText(PREFIX_TXT + str(round(STATE_INFO['DEX_CLEAR'],3)))
-                
-            # if(RANGE_TYPE == '％敏捷'): 
-            #     myUI.viewParameter_IMPROVE_VALUE_AS.setText(PREFIX_TXT + str(round(STATE_INFO['DEX_P']*100,3)))
-            
-            # if(RANGE_TYPE == '不吃％敏'): 
-            #     myUI.viewParameter_IMPROVE_VALUE_AS.setText(PREFIX_TXT + str(round(STATE_INFO['DEX_UNIQUE'],3)))
-                
-            # if(RANGE_TYPE == '智力'): 
-            #     myUI.viewParameter_IMPROVE_VALUE_AS.setText(PREFIX_TXT + str(round(STATE_INFO['INT_CLEAR'],3)))
-            
-            # if(RANGE_TYPE == '％智力'): 
-            #     myUI.viewParameter_IMPROVE_VALUE_AS.setText(PREFIX_TXT + str(round(STATE_INFO['INT_P']*100,3)))
-            
-            # if(RANGE_TYPE == '不吃％智'): 
-            #     myUI.viewParameter_IMPROVE_VALUE_AS.setText(PREFIX_TXT + str(round(STATE_INFO['INT_UNIQUE'],3)))
-                
-            # if(RANGE_TYPE == '幸運'): 
-            #     myUI.viewParameter_IMPROVE_VALUE_AS.setText(PREFIX_TXT + str(round(STATE_INFO['LUK_CLEAR'],3)))
-                
-            # if(RANGE_TYPE == '％幸運'): 
-            #     myUI.viewParameter_IMPROVE_VALUE_AS.setText(PREFIX_TXT + str(round(STATE_INFO['LUK_P']*100,3)))
-            
-            # if(RANGE_TYPE == '不吃％幸'): 
-            #     myUI.viewParameter_IMPROVE_VALUE_AS.setText(PREFIX_TXT + str(round(STATE_INFO['LUK_UNIQUE'],3)))
 
             # 預估值
             myUI.viewParameter_ESTIMATE_STR.setText(toFloorStr(ESTIMATE_INFO['STR']))
@@ -614,15 +512,6 @@ class AppWindow(QtWidgets.QDialog):
             
             myUI.viewParameter_ESTIMATE_HP.setText(toFloorStr(ESTIMATE_INFO['HP']))
             myUI.viewParameter_ESTIMATE_HP_P.setText(toFloorStr(ESTIMATE_INFO['HP_P']*100))
-
-            # myUI.viewParameter_ESTIMATE_DEX.setText(toFloorStr(ESTIMATE_INFO['DEX']))
-            # myUI.viewParameter_ESTIMATE_DEX_P.setText(toFloorStr(ESTIMATE_INFO['DEX_P']*100))
-
-            # myUI.viewParameter_ESTIMATE_INT.setText(toFloorStr(ESTIMATE_INFO['INT']))
-            # myUI.viewParameter_ESTIMATE_INT_P.setText(toFloorStr(ESTIMATE_INFO['INT_P']*100))
-
-            # myUI.viewParameter_ESTIMATE_LUK.setText(toFloorStr(ESTIMATE_INFO['LUK']))
-            # myUI.viewParameter_ESTIMATE_LUK_P.setText(toFloorStr(ESTIMATE_INFO['LUK_P']*100))
 
             myUI.viewParameter_ESTIMATE_ATTACK.setText(toFloorStr(ESTIMATE_INFO['ATTACK']))
             myUI.viewParameter_ESTIMATE_ATTACK_P.setText(str(round(ESTIMATE_INFO['ATTACK_P']*100)))
@@ -632,318 +521,16 @@ class AppWindow(QtWidgets.QDialog):
 
             myUI.viewParameter_ESTIMATE_STRIKE_P.setText(str(round(ESTIMATE_INFO['STRIKE_P']*100,2)))
             myUI.viewParameter_ESTIMATE_IGNORE_P.setText(str(round(ESTIMATE_INFO['IGNORE_P']*100,2)))
-        except Exception:
+        except Exception as e:
             QtWidgets.QMessageBox.warning(me, '提示', '輸入資料有誤')
+            print('calc_imp')
+            print(e)
             pass
 
-    # event: 計算塔戒
-    # def calc_SeedRing(me):
-        try:
-            myCharactor = me.myCharactor
-            myUI = me.myUI
-
-            TIME_VALUE = myUI.viewSeedRing_TIME_VALUE.value()
-            myUI.viewSeedRing_TIME_VALUE_TXT.setText(str(TIME_VALUE) + ' 秒')
-
-            if (myCharactor.isReset): return False
-            def getData():
-                new_data = {
-                    'DMG_P': 0 - (myUI.textToFloat(myUI.viewSeedRing_DMG_P.text()) / 100),
-                    'ATTACK': 0 - myUI.textToFloat(myUI.viewSeedRing_ATTACK.text()),
-                    'ATTACK_P': 0 - (myUI.textToFloat(myUI.viewSeedRing_ATTACK_P.text()) / 100),
-                    'STRIKE_P': 0 - (myUI.textToFloat(myUI.viewSeedRing_STRIKE_P.text()) / 100),
-                    'IGNORE_P': 0 - (myUI.textToFloat(myUI.viewSeedRing_IGNORE_P.text()) / 100),
-
-                    'STR_CLEAR': 0 - myUI.textToFloat(myUI.viewSeedRing_STR.text()),
-                    'STR_P': 0 - (myUI.textToFloat(myUI.viewSeedRing_STR_P.text()) / 100),
-
-                    'DEX_CLEAR': 0 - myUI.textToFloat(myUI.viewSeedRing_DEX.text()),
-                    'DEX_P': 0 - (myUI.textToFloat(myUI.viewSeedRing_DEX_P.text()) / 100),
-
-                    'INT_CLEAR': 0 - myUI.textToFloat(myUI.viewSeedRing_INT.text()),
-                    'INT_P': 0 - (myUI.textToFloat(myUI.viewSeedRing_INT_P.text()) / 100),
-
-                    'LUK_CLEAR': 0 - myUI.textToFloat(myUI.viewSeedRing_LUK.text()),
-                    'LUK_P': 0 - (myUI.textToFloat(myUI.viewSeedRing_LUK_P.text()) / 100),
-
-                    'ALL_P': 0 - (myUI.textToFloat(myUI.viewSeedRing_ALL_P.text()) / 100)
-                }   
-
-                new_data['STR_CLEAR'] += 4
-                new_data['DEX_CLEAR'] += 4
-                new_data['INT_CLEAR'] += 4
-                new_data['LUK_CLEAR'] += 4
-                new_data['ATTACK'] += 4
-                return new_data
-
-            # ALL_IN_VALUE = myUI.textToFloat(myUI.viewSeedRing_ALL_IN.text())
-            ALL_IN_VALUE = 1
-            OVER_VALUE = myCharactor.calcImprove(getData())['TOTAL']
-            
-            def toSeedValue(value, maxtime = 1):
-                RING_TIME = TIME_VALUE > maxtime and maxtime or TIME_VALUE
-                OVER_TIME = TIME_VALUE > maxtime and TIME_VALUE - maxtime or 0
-                SEED_VALUE = (value-1) * ALL_IN_VALUE * RING_TIME + (OVER_VALUE - 1) * OVER_TIME
-                return round(SEED_VALUE * 100, 2)
-
-            CLASS_INFO = myCharactor.getClassInfo(myCharactor.getData()['CLASS_NAME'])
-            MAIN_AP = ''
-            if(CLASS_INFO['STR'] == 'main'): MAIN_AP = 'STR_CLEAR'
-            if(CLASS_INFO['DEX'] == 'main'): MAIN_AP = 'DEX_CLEAR'
-            if(CLASS_INFO['INT'] == 'main'): MAIN_AP = 'INT_CLEAR'
-            if(CLASS_INFO['LUK'] == 'main'): MAIN_AP = 'LUK_CLEAR'
-
-            if (CLASS_INFO['CLASS_NAME'] == '傑諾'):
-                data = myCharactor.getData()
-                if(data['STR'] > data['DEX'] and data['STR'] > data['LUK']): MAIN_AP = 'STR_CLEAR'
-                if(data['DEX'] > data['STR'] and data['DEX'] > data['LUK']): MAIN_AP = 'DEX_CLEAR'
-                if(data['LUK'] > data['STR'] and data['LUK'] > data['DEX']): MAIN_AP = 'LUK_CLEAR'
-                if(data['LUK'] == data['STR'] and data['LUK'] == data['DEX']): MAIN_AP = 'LUK_CLEAR'
-                
-            WEAPON_ATTACK = myUI.textToFloat(myUI.viewSeedRing_WP_ATTACK.text())
-            
-            # STR
-            new_data = getData()
-            new_data['STR_CLEAR'] += WEAPON_ATTACK * 1
-            IMPROVE_INFO = myCharactor.calcImprove(new_data)
-            SEED_VALUE = toSeedValue(IMPROVE_INFO['TOTAL'], 9)
-            myUI.viewSeedRing_WEAPON_STR_LV1.setText(str(SEED_VALUE) + '%')
-            myUI.viewSeedRing_WEAPON_STR_LV1.setStyleSheet(myUI.getColor(SEED_VALUE))
-            
-            new_data = getData()
-            new_data['STR_CLEAR'] += WEAPON_ATTACK * 2
-            IMPROVE_INFO = myCharactor.calcImprove(new_data)
-            SEED_VALUE = toSeedValue(IMPROVE_INFO['TOTAL'], 11)
-            myUI.viewSeedRing_WEAPON_STR_LV2.setText(str(SEED_VALUE) + '%')
-            myUI.viewSeedRing_WEAPON_STR_LV2.setStyleSheet(myUI.getColor(SEED_VALUE))
-            
-            new_data = getData()
-            new_data['STR_CLEAR'] += WEAPON_ATTACK * 3
-            IMPROVE_INFO = myCharactor.calcImprove(new_data)
-            SEED_VALUE = toSeedValue(IMPROVE_INFO['TOTAL'], 13)
-            myUI.viewSeedRing_WEAPON_STR_LV3.setText(str(SEED_VALUE) + '%')
-            myUI.viewSeedRing_WEAPON_STR_LV3.setStyleSheet(myUI.getColor(SEED_VALUE))
-            
-            new_data = getData()
-            new_data['STR_CLEAR'] += WEAPON_ATTACK * 4
-            IMPROVE_INFO = myCharactor.calcImprove(new_data)
-            SEED_VALUE = toSeedValue(IMPROVE_INFO['TOTAL'], 15)
-            myUI.viewSeedRing_WEAPON_STR_LV4.setText(str(SEED_VALUE) + '%')
-            myUI.viewSeedRing_WEAPON_STR_LV4.setStyleSheet(myUI.getColor(SEED_VALUE))
-
-            # DEX
-            new_data = getData()
-            new_data['DEX_CLEAR'] += WEAPON_ATTACK * 1
-            IMPROVE_INFO = myCharactor.calcImprove(new_data)
-            SEED_VALUE = toSeedValue(IMPROVE_INFO['TOTAL'], 9)
-            myUI.viewSeedRing_WEAPON_DEX_LV1.setText(str(SEED_VALUE) + '%')
-            myUI.viewSeedRing_WEAPON_DEX_LV1.setStyleSheet(myUI.getColor(SEED_VALUE))
-            
-            new_data = getData()
-            new_data['DEX_CLEAR'] += WEAPON_ATTACK * 2
-            IMPROVE_INFO = myCharactor.calcImprove(new_data)
-            SEED_VALUE = toSeedValue(IMPROVE_INFO['TOTAL'], 11)
-            myUI.viewSeedRing_WEAPON_DEX_LV2.setText(str(SEED_VALUE) + '%')
-            myUI.viewSeedRing_WEAPON_DEX_LV2.setStyleSheet(myUI.getColor(SEED_VALUE))
-            
-            new_data = getData()
-            new_data['DEX_CLEAR'] += WEAPON_ATTACK * 3
-            IMPROVE_INFO = myCharactor.calcImprove(new_data)
-            SEED_VALUE = toSeedValue(IMPROVE_INFO['TOTAL'], 13)
-            myUI.viewSeedRing_WEAPON_DEX_LV3.setText(str(SEED_VALUE) + '%')
-            myUI.viewSeedRing_WEAPON_DEX_LV3.setStyleSheet(myUI.getColor(SEED_VALUE))
-            
-            new_data = getData()
-            new_data['DEX_CLEAR'] += WEAPON_ATTACK * 4
-            IMPROVE_INFO = myCharactor.calcImprove(new_data)
-            SEED_VALUE = toSeedValue(IMPROVE_INFO['TOTAL'], 15)
-            myUI.viewSeedRing_WEAPON_DEX_LV4.setText(str(SEED_VALUE) + '%')
-            myUI.viewSeedRing_WEAPON_DEX_LV4.setStyleSheet(myUI.getColor(SEED_VALUE))
-
-            # INT
-            new_data = getData()
-            new_data['INT_CLEAR'] += WEAPON_ATTACK * 1
-            IMPROVE_INFO = myCharactor.calcImprove(new_data)
-            SEED_VALUE = toSeedValue(IMPROVE_INFO['TOTAL'], 9)
-            myUI.viewSeedRing_WEAPON_INT_LV1.setText(str(SEED_VALUE) + '%')
-            myUI.viewSeedRing_WEAPON_INT_LV1.setStyleSheet(myUI.getColor(SEED_VALUE))
-            
-            new_data = getData()
-            new_data['INT_CLEAR'] += WEAPON_ATTACK * 2
-            IMPROVE_INFO = myCharactor.calcImprove(new_data)
-            SEED_VALUE = toSeedValue(IMPROVE_INFO['TOTAL'], 11)
-            myUI.viewSeedRing_WEAPON_INT_LV2.setText(str(SEED_VALUE) + '%')
-            myUI.viewSeedRing_WEAPON_INT_LV2.setStyleSheet(myUI.getColor(SEED_VALUE))
-            
-            new_data = getData()
-            new_data['INT_CLEAR'] += WEAPON_ATTACK * 3
-            IMPROVE_INFO = myCharactor.calcImprove(new_data)
-            SEED_VALUE = toSeedValue(IMPROVE_INFO['TOTAL'], 13)
-            myUI.viewSeedRing_WEAPON_INT_LV3.setText(str(SEED_VALUE) + '%')
-            myUI.viewSeedRing_WEAPON_INT_LV3.setStyleSheet(myUI.getColor(SEED_VALUE))
-            
-            new_data = getData()
-            new_data['INT_CLEAR'] += WEAPON_ATTACK * 4
-            IMPROVE_INFO = myCharactor.calcImprove(new_data)
-            SEED_VALUE = toSeedValue(IMPROVE_INFO['TOTAL'], 15)
-            myUI.viewSeedRing_WEAPON_INT_LV4.setText(str(SEED_VALUE) + '%')
-            myUI.viewSeedRing_WEAPON_INT_LV4.setStyleSheet(myUI.getColor(SEED_VALUE))
-
-            # LUK
-            new_data = getData()
-            new_data['LUK_CLEAR'] += WEAPON_ATTACK * 1
-            IMPROVE_INFO = myCharactor.calcImprove(new_data)
-            SEED_VALUE = toSeedValue(IMPROVE_INFO['TOTAL'], 9)
-            myUI.viewSeedRing_WEAPON_LUK_LV1.setText(str(SEED_VALUE) + '%')
-            myUI.viewSeedRing_WEAPON_LUK_LV1.setStyleSheet(myUI.getColor(SEED_VALUE))
-            
-            new_data = getData()
-            new_data['LUK_CLEAR'] += WEAPON_ATTACK * 2
-            IMPROVE_INFO = myCharactor.calcImprove(new_data)
-            SEED_VALUE = toSeedValue(IMPROVE_INFO['TOTAL'], 11)
-            myUI.viewSeedRing_WEAPON_LUK_LV2.setText(str(SEED_VALUE) + '%')
-            myUI.viewSeedRing_WEAPON_LUK_LV2.setStyleSheet(myUI.getColor(SEED_VALUE))
-            
-            new_data = getData()
-            new_data['LUK_CLEAR'] += WEAPON_ATTACK * 3
-            IMPROVE_INFO = myCharactor.calcImprove(new_data)
-            SEED_VALUE = toSeedValue(IMPROVE_INFO['TOTAL'], 13)
-            myUI.viewSeedRing_WEAPON_LUK_LV3.setText(str(SEED_VALUE) + '%')
-            myUI.viewSeedRing_WEAPON_LUK_LV3.setStyleSheet(myUI.getColor(SEED_VALUE))
-            
-            new_data = getData()
-            new_data['LUK_CLEAR'] += WEAPON_ATTACK * 4
-            IMPROVE_INFO = myCharactor.calcImprove(new_data)
-            SEED_VALUE = toSeedValue(IMPROVE_INFO['TOTAL'], 15)
-            myUI.viewSeedRing_WEAPON_LUK_LV4.setText(str(SEED_VALUE) + '%')
-            myUI.viewSeedRing_WEAPON_LUK_LV4.setStyleSheet(myUI.getColor(SEED_VALUE))
-
-            # TOTALING
-            TOTALLING_AP = (myCharactor.getData()['STR'] + myCharactor.getData()['DEX'] + myCharactor.getData()['INT'] + myCharactor.getData()['LUK']) * 0.01
-            
-            new_data = getData()
-            new_data[MAIN_AP] += TOTALLING_AP * 1
-            IMPROVE_INFO = myCharactor.calcImprove(new_data)
-            SEED_VALUE = toSeedValue(IMPROVE_INFO['TOTAL'], 9)
-            myUI.viewSeedRing_TOTALLING_LV1.setText(str(SEED_VALUE) + '%')
-            myUI.viewSeedRing_TOTALLING_LV1.setStyleSheet(myUI.getColor(SEED_VALUE))
-
-            new_data = getData()
-            new_data[MAIN_AP] += TOTALLING_AP * 1
-            IMPROVE_INFO = myCharactor.calcImprove(new_data)
-            SEED_VALUE = toSeedValue(IMPROVE_INFO['TOTAL'], 11)
-            myUI.viewSeedRing_TOTALLING_LV2.setText(str(SEED_VALUE) + '%')
-            myUI.viewSeedRing_TOTALLING_LV2.setStyleSheet(myUI.getColor(SEED_VALUE))
-
-            new_data = getData()
-            new_data[MAIN_AP] += TOTALLING_AP * 2
-            IMPROVE_INFO = myCharactor.calcImprove(new_data)
-            SEED_VALUE = toSeedValue(IMPROVE_INFO['TOTAL'], 13)
-            myUI.viewSeedRing_TOTALLING_LV3.setText(str(SEED_VALUE) + '%')
-            myUI.viewSeedRing_TOTALLING_LV3.setStyleSheet(myUI.getColor(SEED_VALUE))
-
-            new_data = getData()
-            new_data[MAIN_AP] += TOTALLING_AP * 2
-            IMPROVE_INFO = myCharactor.calcImprove(new_data)
-            SEED_VALUE = toSeedValue(IMPROVE_INFO['TOTAL'], 15)
-            myUI.viewSeedRing_TOTALLING_LV4.setText(str(SEED_VALUE) + '%')
-            myUI.viewSeedRing_TOTALLING_LV4.setStyleSheet(myUI.getColor(SEED_VALUE))
-            
-            # RISTTAKER
-            new_data = getData()
-            new_data['ATTACK_P'] += 0.2
-            IMPROVE_INFO = myCharactor.calcImprove(new_data)
-            SEED_VALUE = toSeedValue(IMPROVE_INFO['TOTAL'], 12)
-            myUI.viewSeedRing_RISTTAKER_LV1.setText(str(SEED_VALUE) + '%')
-            myUI.viewSeedRing_RISTTAKER_LV1.setStyleSheet(myUI.getColor(SEED_VALUE))
-
-            new_data = getData()
-            new_data['ATTACK_P'] += 0.3
-            IMPROVE_INFO = myCharactor.calcImprove(new_data)
-            SEED_VALUE = toSeedValue(IMPROVE_INFO['TOTAL'], 18)
-            myUI.viewSeedRing_RISTTAKER_LV2.setText(str(SEED_VALUE) + '%')
-            myUI.viewSeedRing_RISTTAKER_LV2.setStyleSheet(myUI.getColor(SEED_VALUE))
-
-            new_data = getData()
-            new_data['ATTACK_P'] += 0.4
-            IMPROVE_INFO = myCharactor.calcImprove(new_data)
-            SEED_VALUE = toSeedValue(IMPROVE_INFO['TOTAL'], 24)
-            myUI.viewSeedRing_RISTTAKER_LV3.setText(str(SEED_VALUE) + '%')
-            myUI.viewSeedRing_RISTTAKER_LV3.setStyleSheet(myUI.getColor(SEED_VALUE))
-
-            new_data = getData()
-            new_data['ATTACK_P'] += 0.5
-            IMPROVE_INFO = myCharactor.calcImprove(new_data)
-            SEED_VALUE = toSeedValue(IMPROVE_INFO['TOTAL'], 30)
-            myUI.viewSeedRing_RISTTAKER_LV4.setText(str(SEED_VALUE) + '%')
-            myUI.viewSeedRing_RISTTAKER_LV4.setStyleSheet(myUI.getColor(SEED_VALUE))
-
-            # RESTRAINT
-            new_data = getData()
-            new_data['ATTACK_P'] += 0.25
-            IMPROVE_INFO = myCharactor.calcImprove(new_data)
-            SEED_VALUE = toSeedValue(IMPROVE_INFO['TOTAL'], 9)
-            myUI.viewSeedRing_RESTRAINT_LV1.setText(str(SEED_VALUE) + '%')
-            myUI.viewSeedRing_RESTRAINT_LV1.setStyleSheet(myUI.getColor(SEED_VALUE))
-
-            new_data = getData()
-            new_data['ATTACK_P'] += 0.50
-            IMPROVE_INFO = myCharactor.calcImprove(new_data)
-            SEED_VALUE = toSeedValue(IMPROVE_INFO['TOTAL'], 11)
-            myUI.viewSeedRing_RESTRAINT_LV2.setText(str(SEED_VALUE) + '%')
-            myUI.viewSeedRing_RESTRAINT_LV2.setStyleSheet(myUI.getColor(SEED_VALUE))
-
-            new_data = getData()
-            new_data['ATTACK_P'] += 0.75
-            IMPROVE_INFO = myCharactor.calcImprove(new_data)
-            SEED_VALUE = toSeedValue(IMPROVE_INFO['TOTAL'], 13)
-            myUI.viewSeedRing_RESTRAINT_LV3.setText(str(SEED_VALUE) + '%')
-            myUI.viewSeedRing_RESTRAINT_LV3.setStyleSheet(myUI.getColor(SEED_VALUE))
-
-            new_data = getData()
-            new_data['ATTACK_P'] += 1.00
-            IMPROVE_INFO = myCharactor.calcImprove(new_data)
-            SEED_VALUE = toSeedValue(IMPROVE_INFO['TOTAL'], 15)
-            myUI.viewSeedRing_RESTRAINT_LV4.setText(str(SEED_VALUE) + '%')
-            myUI.viewSeedRing_RESTRAINT_LV4.setStyleSheet(myUI.getColor(SEED_VALUE))
-
-            # STRIKE
-            new_data = getData()
-            new_data['STRIKE_P'] += 0.07
-            IMPROVE_INFO = myCharactor.calcImprove(new_data)
-            SEED_VALUE = toSeedValue(IMPROVE_INFO['TOTAL'], 9)
-            myUI.viewSeedRing_STRIKE_LV1.setText(str(SEED_VALUE) + '%')
-            myUI.viewSeedRing_STRIKE_LV1.setStyleSheet(myUI.getColor(SEED_VALUE))
-
-            new_data = getData()
-            new_data['STRIKE_P'] += 0.14
-            IMPROVE_INFO = myCharactor.calcImprove(new_data)
-            SEED_VALUE = toSeedValue(IMPROVE_INFO['TOTAL'], 11)
-            myUI.viewSeedRing_STRIKE_LV2.setText(str(SEED_VALUE) + '%')
-            myUI.viewSeedRing_STRIKE_LV2.setStyleSheet(myUI.getColor(SEED_VALUE))
-
-            new_data = getData()
-            new_data['STRIKE_P'] += 0.21
-            IMPROVE_INFO = myCharactor.calcImprove(new_data)
-            SEED_VALUE = toSeedValue(IMPROVE_INFO['TOTAL'], 13)
-            myUI.viewSeedRing_STRIKE_LV3.setText(str(SEED_VALUE) + '%')
-            myUI.viewSeedRing_STRIKE_LV3.setStyleSheet(myUI.getColor(SEED_VALUE))
-
-            new_data = getData()
-            new_data['STRIKE_P'] += 0.28
-            IMPROVE_INFO = myCharactor.calcImprove(new_data)
-            SEED_VALUE = toSeedValue(IMPROVE_INFO['TOTAL'], 15)
-            myUI.viewSeedRing_STRIKE_LV4.setText(str(SEED_VALUE) + '%')
-            myUI.viewSeedRing_STRIKE_LV4.setStyleSheet(myUI.getColor(SEED_VALUE))
-            
-        except Exception:
-            QtWidgets.QMessageBox.warning(me, '提示', '輸入資料有誤')
-            pass
-    
     # function: 計算裝備更換
     def calc_Equipment(me):
         try:
-            myCharactor = me.myCharactor
+            myCharactor = me.myCharacter
             myUI = me.myUI
 
             if (myCharactor.isReset): return False
@@ -958,14 +545,8 @@ class AppWindow(QtWidgets.QDialog):
                     'STR_CLEAR': 0 - myUI.textToFloat(myUI.viewEquipment_origin_STR.text()),
                     'STR_P': 0 - (myUI.textToFloat(myUI.viewEquipment_origin_STR_P.text()) / 100),
 
-                    'DEX_CLEAR': 0 - myUI.textToFloat(myUI.viewEquipment_origin_DEX.text()),
-                    'DEX_P': 0 - (myUI.textToFloat(myUI.viewEquipment_origin_DEX_P.text()) / 100),
-
-                    'INT_CLEAR': 0 - myUI.textToFloat(myUI.viewEquipment_origin_INT.text()),
-                    'INT_P': 0 - (myUI.textToFloat(myUI.viewEquipment_origin_INT_P.text()) / 100),
-
-                    'LUK_CLEAR': 0 - myUI.textToFloat(myUI.viewEquipment_origin_LUK.text()),
-                    'LUK_P': 0 - (myUI.textToFloat(myUI.viewEquipment_origin_LUK_P.text()) / 100),
+                    'HP_CLEAR': 0 - myUI.textToFloat(myUI.viewEquipment_origin_HP.text()),
+                    'HP_P': 0 - (myUI.textToFloat(myUI.viewEquipment_origin_HP_P.text()) / 100),
 
                     'ALL_P': 0 - (myUI.textToFloat(myUI.viewEquipment_origin_ALL_P.text()) / 100)
                 }
@@ -981,12 +562,8 @@ class AppWindow(QtWidgets.QDialog):
             SET_INFO['STRIKE_P'] += (myUI.textToFloat(myUI.viewEquipment_Set1_STRIKE_P.text())/100)
             SET_INFO['STR_CLEAR'] += myUI.textToFloat(myUI.viewEquipment_Set1_STR.text())
             SET_INFO['STR_P'] += (myUI.textToFloat(myUI.viewEquipment_Set1_STR_P.text())/100)
-            SET_INFO['DEX_CLEAR'] += myUI.textToFloat(myUI.viewEquipment_Set1_DEX.text())
-            SET_INFO['DEX_P'] += (myUI.textToFloat(myUI.viewEquipment_Set1_DEX_P.text())/100)
-            SET_INFO['INT_CLEAR'] += myUI.textToFloat(myUI.viewEquipment_Set1_INT.text())
-            SET_INFO['INT_P'] += (myUI.textToFloat(myUI.viewEquipment_Set1_INT_P.text())/100)
-            SET_INFO['LUK_CLEAR'] += myUI.textToFloat(myUI.viewEquipment_Set1_LUK.text())
-            SET_INFO['LUK_P'] += (myUI.textToFloat(myUI.viewEquipment_Set1_LUK_P.text())/100)
+            SET_INFO['HP_CLEAR'] += myUI.textToFloat(myUI.viewEquipment_Set1_HP.text())
+            SET_INFO['HP_P'] += (myUI.textToFloat(myUI.viewEquipment_Set1_HP_P.text())/100)
             SET_INFO['ALL_P'] += (myUI.textToFloat(myUI.viewEquipment_Set1_ALL_P.text())/100)
             
             # 重算等效無視
@@ -1009,12 +586,8 @@ class AppWindow(QtWidgets.QDialog):
             SET_INFO['STRIKE_P'] += (myUI.textToFloat(myUI.viewEquipment_Set2_STRIKE_P.text())/100)
             SET_INFO['STR_CLEAR'] += myUI.textToFloat(myUI.viewEquipment_Set2_STR.text())
             SET_INFO['STR_P'] += (myUI.textToFloat(myUI.viewEquipment_Set2_STR_P.text())/100)
-            SET_INFO['DEX_CLEAR'] += myUI.textToFloat(myUI.viewEquipment_Set2_DEX.text())
-            SET_INFO['DEX_P'] += (myUI.textToFloat(myUI.viewEquipment_Set2_DEX_P.text())/100)
-            SET_INFO['INT_CLEAR'] += myUI.textToFloat(myUI.viewEquipment_Set2_INT.text())
-            SET_INFO['INT_P'] += (myUI.textToFloat(myUI.viewEquipment_Set2_INT_P.text())/100)
-            SET_INFO['LUK_CLEAR'] += myUI.textToFloat(myUI.viewEquipment_Set2_LUK.text())
-            SET_INFO['LUK_P'] += (myUI.textToFloat(myUI.viewEquipment_Set2_LUK_P.text())/100)
+            SET_INFO['HP_CLEAR'] += myUI.textToFloat(myUI.viewEquipment_Set2_HP.text())
+            SET_INFO['HP_P'] += (myUI.textToFloat(myUI.viewEquipment_Set2_HP_P.text())/100)
             SET_INFO['ALL_P'] += (myUI.textToFloat(myUI.viewEquipment_Set2_ALL_P.text())/100)
             
             IGNORE_TO = myCharactor.calcIgnore(myCharactor.getData()['IGNORE_P'], SET_INFO['IGNORE_P'])
@@ -1028,14 +601,16 @@ class AppWindow(QtWidgets.QDialog):
             myUI.viewEquipment_Set2_IMPROVE.setText('增幅 ' + str(toPercentText(IMPROVE_INFO['TOTAL'])))
 
 
-        except Exception:
+        except Exception as e:
             QtWidgets.QMessageBox.warning(me, '提示', '輸入資料有誤')
+            print('calc_eq')
+            print(e)
             pass
 
     # funtion: 計算等效無視
     def doCalcIgnore(me):
         try:
-            myCharactor = me.myCharactor
+            myCharactor = me.myCharacter
             myUI = me.myUI
 
             IGNORE_BEFORE_TXT = myUI.viewTools_IGNORE_BEFORE.text()
@@ -1061,7 +636,7 @@ class AppWindow(QtWidgets.QDialog):
             IGNORE_AFTER  = myUI.textToFloat(IGNORE_AFTER_TXT) / 100
 
             if (IGNORE_BEFORE > 1 or IGNORE_RANGE > 1 or IGNORE_AFTER > 1):
-                QtWidgets.QMessageBox.warning(me, '提示', '輸入資料有誤')
+                QtWidgets.QMessageBox.warning(me, '提示', '輸入資料有誤 無視防禦錯誤')
                 return False
 
             if (IGNORE_AFTER_TXT == ''):
@@ -1088,12 +663,10 @@ class AppWindow(QtWidgets.QDialog):
                 myUI.viewTools_IGNORE_AFTER.setText(str(IGNORE_AFTER))
                 return True
             
-            
-
-
-
-        except Exception:
+        except Exception as e:
             QtWidgets.QMessageBox.warning(me, '提示', '輸入資料有誤')
+            print('doCalcIgnore')
+            print(e)
             pass
 # ------------------ APP 入口 ------------------
 app = QtWidgets.QApplication(sys.argv)
