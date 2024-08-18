@@ -243,41 +243,6 @@ class AppWindow(QtWidgets.QDialog):
                 'HP_CLEAR=' + str(myUI.viewAbility_HP_CLEAR.text()) + '\n',
                 'HP_P=' + str(myUI.viewAbility_HP_P.text()) + '\n',
                 'HP_UNIQUE=' + str(myUI.viewAbility_HP_UNIQUE.text()) + '\n',
-                
-                # 'DEX_CLEAR=' + str(myUI.viewAbility_DEX_CLEAR.text()) + '\n',
-                # 'DEX_P=' + str(myUI.viewAbility_DEX_P.text()) + '\n',
-                # 'DEX_UNIQUE=' + str(myUI.viewAbility_DEX_UNIQUE.text()) + '\n',
-
-                # 'INT_CLEAR=' + str(myUI.viewAbility_INT_CLEAR.text()) + '\n',
-                # 'INT_P=' + str(myUI.viewAbility_INT_P.text()) + '\n',
-                # 'INT_UNIQUE=' + str(myUI.viewAbility_INT_UNIQUE.text()) + '\n',
-
-                # 'LUK_CLEAR=' + str(myUI.viewAbility_LUK_CLEAR.text()) + '\n',
-                # 'LUK_P=' + str(myUI.viewAbility_LUK_P.text()) + '\n',
-                # 'LUK_UNIQUE=' + str(myUI.viewAbility_LUK_UNIQUE.text()) + '\n',
-
-                'SEED_ATTACK=' + str(myUI.viewSeedRing_ATTACK.text()) + '\n',
-                'SEED_ATTACK_P=' + str(myUI.viewSeedRing_ATTACK_P.text()) + '\n',
-                'SEED_DMG_P=' + str(myUI.viewSeedRing_DMG_P.text()) + '\n',
-                'SEED_STRIKE_P=' + str(myUI.viewSeedRing_STRIKE_P.text()) + '\n',
-                'SEED_IGNORE_P=' + str(myUI.viewSeedRing_IGNORE_P.text()) + '\n',
-
-                'SEED_STR=' + str(myUI.viewSeedRing_STR.text()) + '\n',
-                'SEED_STR_P=' + str(myUI.viewSeedRing_STR_P.text()) + '\n',
-
-                'SEED_DEX=' + str(myUI.viewSeedRing_DEX.text()) + '\n',
-                'SEED_DEX_P=' + str(myUI.viewSeedRing_DEX_P.text()) + '\n',
-
-                'SEED_INT=' + str(myUI.viewSeedRing_INT.text()) + '\n',
-                'SEED_INT_P=' + str(myUI.viewSeedRing_INT_P.text()) + '\n',
-
-                'SEED_LUK=' + str(myUI.viewSeedRing_LUK.text()) + '\n',
-                'SEED_LUK_P=' + str(myUI.viewSeedRing_LUK_P.text()) + '\n',
-
-                'SEED_ALL_P=' + str(myUI.viewSeedRing_ALL_P.text()) + '\n',
-                
-                'SEED_WEAPON_ATTACK=' + str(myUI.viewSeedRing_WP_ATTACK.text()) + '\n',
-                # 'SEED_ALL_IN=' + str(myUI.viewSeedRing_ALL_IN.text()) + '\n',
             ]
 
             data.writelines(array)

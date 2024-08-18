@@ -48,15 +48,6 @@ class Character():
             'STR': 0, 
             'STR_P': 0, 'STR_CLEAR': 0, 'STR_UNIQUE': 0,
 
-            'DEX': 0, 
-            'DEX_P': 0, 'DEX_CLEAR': 0, 'DEX_UNIQUE': 0,
-
-            'INT': 0, 
-            'INT_P': 0, 'INT_CLEAR': 0, 'INT_UNIQUE': 0,
-
-            'LUK': 0, 
-            'LUK_P': 0, 'LUK_CLEAR': 0, 'LUK_UNIQUE': 0,
-
             'FIX': 1
         }
         me.isReset = True
@@ -381,14 +372,12 @@ class Character():
         # 計算等效屬性
         newData = getOrigin()
 
-        
         print('---------newData---------')
         print(newData)
         print('-------------------------')
 
         myAttribute = me.calcAttrParam(getOrigin())
 
-        
         print('---------myAttribute---------')
         print(myAttribute)
         print('-----------------------------')
@@ -397,13 +386,26 @@ class Character():
         # --------------------- STR ---------------------
         NEW_AP = myAttribute * IMPROVE_RANGE
 
+        print('---------NEW_AP---------')
+        print(NEW_AP)
+        print('-----------------------------')
+
         def getBaseHPByLevel(level):
             return 545 + level * 90
         
-        NEW_AP = (NEW_AP - data['STR'] - getBaseHPByLevel(data['LEVEL'])/3.5)/0.8 + getBaseHPByLevel(data['LEVEL'])/3.5
+        print('---------BaseHP---------')
+        print(getBaseHPByLevel(data['LEVEL']))
+        print('-----------------------------')
         
+        NEW_AP = (NEW_AP - data['STR'] - getBaseHPByLevel(data['LEVEL'])/3.5) * 1.25 * 3.5 + getBaseHPByLevel(data['LEVEL'])
+        
+        print('---------NEW_AP2---------')
+        print(NEW_AP)
+        print('-----------------------------')
+
         # NEW_AP = 新的屬性
         NEW_AP -= data['HP_UNIQUE']
+        
         STATE_INFO['HP_CLEAR'] = (NEW_AP / (1 + data['HP_P'])) - data['HP_CLEAR']
         STATE_INFO['HP_P'] = (NEW_AP / data['HP_CLEAR']) - (1 + data['HP_P'])
         STATE_INFO['HP_UNIQUE'] = STATE_INFO['HP_CLEAR'] * (1 + data['HP_P'])

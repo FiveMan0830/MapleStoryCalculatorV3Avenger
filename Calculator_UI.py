@@ -225,15 +225,6 @@ class Calculator_UI():
         me.viewParameter_IMPROVE_HP_CLEAR.setText(impTxt)
         me.viewParameter_IMPROVE_HP_P.setText(impTxt)
         me.viewParameter_IMPROVE_HP_UNIQUE.setText(impTxt)
-        # me.viewParameter_IMPROVE_DEX_CLEAR.setText(impTxt)
-        # me.viewParameter_IMPROVE_DEX_P.setText(impTxt)
-        # me.viewParameter_IMPROVE_DEX_UNIQUE.setText(impTxt)
-        # me.viewParameter_IMPROVE_INT_CLEAR.setText(impTxt)
-        # me.viewParameter_IMPROVE_INT_P.setText(impTxt)
-        # me.viewParameter_IMPROVE_INT_UNIQUE.setText(impTxt)
-        # me.viewParameter_IMPROVE_LUK_CLEAR.setText(impTxt)
-        # me.viewParameter_IMPROVE_LUK_P.setText(impTxt)
-        # me.viewParameter_IMPROVE_LUK_UNIQUE.setText(impTxt)
         me.viewParameter_IMPROVE_ALL_P.setText(impTxt)
 
         me.viewParameter_IMPROVE_ATT.setText(impTxt)
@@ -251,9 +242,6 @@ class Calculator_UI():
         
         me.viewParameter_IMPROVE_VALUE_AS_PARAMETER = me.makeField(page, QtWidgets.QComboBox(page), 240, 260, 110, 24)
         me.viewParameter_IMPROVE_VALUE_AS_PARAMETER.addItems(PARAMETER_TYPE)
-        
-        # me.viewParameter_IMPROVE_ARC_Ring = me.makeField(page, QtWidgets.QLabel(page), 220, 350, 400, 24)
-        # me.viewParameter_IMPROVE_ARC_Ring.setText('艾戒\t0.000%')
 
         # 推估數值
         me.makeField(page, QtWidgets.QLineEdit(page), 460, 140 + 36 * 0, 110, 36).setEnabled(False)
