@@ -1,7 +1,7 @@
 from re import M
 import sys
 from PyQt5 import QtWidgets
-from Charactor import Charactor
+from Character import Character
 from Calculator_UI import Calculator_UI
 import math
 
@@ -18,7 +18,7 @@ class AppWindow(QtWidgets.QDialog):
 
     # function: UI事件綁定
     def loadUIConfig(me):
-        myCharactor = Charactor()
+        myCharactor = Character()
         myUI = me.myUI
 
         # 載入職業資訊
